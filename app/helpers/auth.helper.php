@@ -24,6 +24,7 @@ class AuthHelper {
         session_start();
         $_SESSION['ID_USER'] = $user->id;
         $_SESSION['EMAIL_USER'] = $user->email;
+        $_SESSION['ROL_USER'] = $user->rol;
     }
 
 }
