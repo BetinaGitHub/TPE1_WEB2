@@ -19,30 +19,72 @@ class AuthController {
     }
 
     public function loginUser() {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // verifico campos obligatorios
-        if (empty($email) || empty($password)) {
-            $this->view->showFormLogin("Faltan datos obligatorios");
-            die();
+        if (isset($_POST['ingresar'])){
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $rol = $_POST['rol'];
+            echo $rol;
+            // verifico campos obligatorios
+            if (empty($email) || empty($password)) {
+                $this->view->showFormLogin("Faltan datos obligatorios");
+                die();
+            }
+    
+            // obtengo el usuario
+            $user = $this->model->getByEmail($email);
+    
+            // si el usuario existe, y las contraseñas coinciden
+            if ($user && password_verify($password, $user->password)) {
+                
+                // armo la sesion del usuario
+                $this->authHelper->login($user);
+                //$logueado = true;
+    
+                // redirigimos al listado
+                   header("Location: " . BASE_URL .'abm-tools'); 
+            } else {
+                $this->view->showFormLogin("Usuario Desconocido");
+            }
         }
+          else {
+             echo "REGISTRAR";
+             die;
+          };
+    }
 
-        // obtengo el usuario
-        $user = $this->model->getByEmail($email);
-
-        // si el usuario existe, y las contraseñas coinciden
-        if ($user && password_verify($password, $user->password)) {
-            
-            // armo la sesion del usuario
-            $this->authHelper->login($user);
-            //$logueado = true;
-
-            // redirigimos al listado
-               header("Location: " . BASE_URL .'abm-tools'); 
-        } else {
-            $this->view->showFormLogin("Usuario Desconocido");
+    public function registUser() {
+        if (isset($_POST['ingresar'])){
+            $username = $_POST['username']
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $rol = 2;
+            echo $rol;
+            // verifico campos obligatorios
+            if (empty($email) || empty($password)) {
+                $this->view->showFormLogin("Faltan datos obligatorios");
+                die();
+            }
+    
+            // obtengo el usuario
+            $user = $this->model->getByEmail($email);
+    
+            // si el usuario existe, y las contraseñas coinciden
+            if ($user && password_verify($password, $user->password)) {
+                
+                // armo la sesion del usuario
+                $this->authHelper->login($user);
+                //$logueado = true;
+    
+                // redirigimos al listado
+                   header("Location: " . BASE_URL .'abm-tools'); 
+            } else {
+                $this->view->showFormLogin("Usuario Desconocido");
+            }
         }
+          else {
+             echo "REGISTRAR";
+             die;
+          };
     }
 
     function logout() {

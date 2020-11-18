@@ -21,4 +21,13 @@ class UserModel {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
+    public function insert($username,$email,$passw,$rol) {
+        // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
+        $query = $this->db->prepare('INSERT INTO user (username,email,passw,rol) VALUES (?,?,?,?)');
+        $query->execute([$username,$email,$passw,$rol]);
+         // 3. Obtengo y devuelo el ID de la herramienta nueva
+        return $this->db->lastInsertId();
+        die;
+    }
+
 }

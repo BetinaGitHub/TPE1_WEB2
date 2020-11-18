@@ -15,7 +15,8 @@
                     {$error}
                 </div>
             {/if}
-            <button type="submit" class="btn btn-primary bg-dark">Entrar</button>
+            <button type="submit" name="ingresar" value="Ingresar" class="btn btn-primary bg-dark">Ingresar</button>
+            <button type="submit" name="registrar" value="Registrar" class="btn btn-primary bg-dark">Registrase</button>
         </form>
     </div>
 {include file='footer.tpl'}
