@@ -43,7 +43,7 @@ class ToolView {
     function showDetails($tools) {
         $smarty = new Smarty();
         $smarty -> assign('tools',$tools);
-        $smarty -> display('templates/show_details.tpl');
+        $smarty -> display('templates/show_details_csr.tpl');
     }
     function showError($msg) {
         echo "<h1> ERROR!</h1>";

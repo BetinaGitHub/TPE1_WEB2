@@ -14,4 +14,4 @@ class ApiToolController {
         $this->view = new APIView();
         $this->data = file_get_contents("php://input");
     }
-
+}

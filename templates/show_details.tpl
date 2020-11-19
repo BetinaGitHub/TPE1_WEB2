@@ -1,5 +1,4 @@
-{include file="header.tpl"}
-<div class='container w-50'>  
+{* <div class='container w-50'>   *}
 <div class="card">
   <img class="card-img-top sm img-thumbnail"  src="../img/sembradora.jpg" style='max-width: 300px' alt="Crucianelli">    
     {* <img class="card-img-top sm img-thumbnail"  value={$tools->foto} style='max-width: 300px' alt="Crucianelli"> *} 
@@ -10,10 +9,7 @@
     <p class="card-text">Modelo: {$tools->modelo}</p>
     <p class="card-text">Precio: {$tools->precio}</p>
 
-    </div> 
-  </div>
-
-  <a class="col-2 btn bg-dark text-white " href="{BASE_URL}">Volver</a>
-</div>  
-{include file="footer.tpl" } 
-{* "../img/sembradora.jpg" *}
+  </div> 
+</div>
+<a class="col-4 btn bg-dark text-white " href="{BASE_URL}">Volver</a>
+{* </div>  *}

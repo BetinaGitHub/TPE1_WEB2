@@ -6,8 +6,7 @@ require_once 'app/api/api.controller.php';
 $router = new Router();
 
 // armo la tabla de ruteo
-$router->addRoute('tareas', 'GET', '
-', 'getAll');
+$router->addRoute('tareas', 'GET', 'ApiTaskController', 'getAll');
 $router->addRoute('tareas/:ID', 'GET', 'ApiTaskController', 'get');
 $router->addRoute('tareas/:ID', 'DELETE', 'ApiTaskController', 'delete');
 
