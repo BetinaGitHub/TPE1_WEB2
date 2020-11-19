@@ -5,7 +5,7 @@
         <th scope="col">Maquinaria</th>
         <th scope="col">Rubro</th>
         <th scope="col">Modelo</th>
-        <th scope="col">Descripcion</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -14,7 +14,7 @@
           <td>{$tool->descripcion}</td>
           {* <td>{$rubro->descripcion}</td> *}
           <td>{$tool->modelo}</td>
-          <td>{$tool->notas}</td>
+          <td>{$tool->notas}</td> 
           <td class="d-flex no-wrap">
             <a class="btn btn-dark btn-sm" href="{BASE_URL}detalles/{$tool->id}">Detalles</a>
           </td>
