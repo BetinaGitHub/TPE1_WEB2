@@ -80,6 +80,14 @@ class ToolController {
         $this->view->showToolsconFiltro($tools);
     }
 
+    function showSearchTools() {
+        $consulta = $_POST['search'];
+   //     var_dump($consulta);
+    //    die();
+        $tools = $this->model->getSearchAll($consulta);
+        $this->view->showTools($tools);
+    }
+
     /**
      * Inserta una herramienta en la base
      */

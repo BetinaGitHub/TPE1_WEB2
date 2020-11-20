@@ -42,14 +42,34 @@ class ToolModel {
     
   /* Antes de llamaba  function getconRubro($id) { */
     function getOne($id) {
-    //   var_dump($id);
-    //    die;
         $sql = 'SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join rubro on maquinaria.idrubro = rubro.id where maquinaria.id = ?';
         $query = $this->db->prepare($sql);
- //      $query = $this->db->prepare("SELECT id,idRubro,descripcion, modelo, notas, foto FROM maquinaria where id = $id");
         $query->execute([$id]);
         $tools = $query->fetch(PDO::FETCH_OBJ); 
         return $tools;
+    }
+
+    function getSearchAll($consulta) {
+    //    $sql = 'SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join rubro on maquinaria.idrubro = rubro.id';
+      
+        if(isset($consulta)){
+            $q = $consulta;
+     
+            $sql = 'SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join rubro
+                  on maquinaria.idrubro = rubro.id WHERE (descripcion LIKE"%MAR%")';
+                  // OR descrubro LIKE '%".$q."%')
+                  // OR modelo LIKE '%".$q."%' OR notas LIKE '%".$q."%'';
+                  //  OR precio LIKE '%".$q."%'';
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            $tools = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de herramientas
+            var_dump($tools);
+            die();
+
+  /*                  
+            If ($tools->num_rows > 0){  muestro datos}  else {echo 'no hay resultados de la busqueda'}; */
+            return $tools;
+        }
     }
     
     /**

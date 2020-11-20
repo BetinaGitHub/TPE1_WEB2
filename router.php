@@ -108,8 +108,16 @@ switch ($params[0]) {
 
     case 'filtrar': // filtrar/:ID
         $controller = new ToolController();
+        var_dump($params);
+        die;
       //  $id = $params[1];
         $controller->showToolsFiltro($params[1]);
+    break;
+
+    case 'search-tools': 
+        $controller = new ToolController();
+    //    $id = $params[1];
+        $controller->showSearchTools();
     break;
 
     default:
