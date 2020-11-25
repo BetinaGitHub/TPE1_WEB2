@@ -1,20 +1,16 @@
 <?php
 require_once 'libs/Router.php';
-require_once 'app/api/api.controller.php';
+require_once 'app/api/api-comment.controller.php';
 
 // creo el router
 $router = new Router();
 
-// armo la tabla de ruteo
-$router->addRoute('tareas', 'GET', 'ApiTaskController', 'getAll');
-$router->addRoute('tareas/:ID', 'GET', 'ApiTaskController', 'get');
-$router->addRoute('tareas/:ID', 'DELETE', 'ApiTaskController', 'delete');
+ // armo la tabla de ruteo
+$router->addRoute('comentarios', 'GET', 'ApiCommentController', 'getAll');
+$router->addRoute('comentarios/:ID', 'GET', 'ApiCommentController', 'get');
+$router->addRoute('comentarios/:ID', 'DELETE', 'ApiCommentController', 'remove');
+$router->addRoute('comentarios', 'POST', 'ApiCommentController', 'insert');
 
-$router->addRoute('tareas', 'POST', 'ApiTaskController', 'add');
-$router->addRoute('tareas/:ID', 'PUT', 'ApiTaskController', 'update');
-
-
-$router->setDefaultRoute('ApiTaskController','show404');
-
+$router->setDefaultRoute('ApiCommentController','show404');
 // rutea
 $router->route($_REQUEST['resource'],  $_SERVER['REQUEST_METHOD']);
