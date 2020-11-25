@@ -13,9 +13,12 @@ class ApiCommentController {
     }
 
     public function getAll($params = null){
-        $comments = $this->model->getAll();
+        $params = [];
+        $comments = $this->model->getAll($params);
         $this->view->response($comments,200);
+     //   return $comments;
     }
+  
 
     public function get($params = null){
         $idmaq = $params[':ID'];

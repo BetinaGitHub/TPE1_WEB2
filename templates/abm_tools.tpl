@@ -55,7 +55,7 @@
 <div class='container'>
   <nav class="navbar navbar-light bg-light">
     <form class="form-inline" action="{BASE_URL}search-tools" method="POST">
-      <input name="search" class="form-control md-8" type="search" placeholder="Búsqueda por columnas" aria-label="Search">
+      <input name="search" class="form-control md-8" type="search" placeholder="Búsqueda avanzada" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
   </nav>

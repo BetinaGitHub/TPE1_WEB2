@@ -19,7 +19,9 @@ class CommentModel {
       $query = $this->db->prepare($sql);
       $query->execute();
       $comments = $query->fetchAll(PDO::FETCH_OBJ); 
-     return $comments;
+      var_dump($comments);
+    //  die();
+      return $comments;
     }
 
     function get($id) {

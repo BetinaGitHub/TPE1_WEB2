@@ -7,9 +7,9 @@ const app = new Vue({
     },
 });
 
-
+/*
 let list = [{
-        descripcion: 'Es un producto altamente vendible',
+        descripcion: 'Es un producto  vendible',
         score: 5,
     },
     {
@@ -27,10 +27,11 @@ let list = [{
 
 ];
 
-console.log(list);
+console.log(list);*/
 
 
 document.addEventListener('DOMContentLoaded', e => {
+    console.log('paso 1');
     getComments();
 
     // document.querySelector('#task-form').addEventListener('submit', e => {
@@ -40,26 +41,48 @@ document.addEventListener('DOMContentLoaded', e => {
 
 });
 
+
 async function getComments() {
-    app.comments = list;
+    //    app.comments = list;
+    console.log('paso 2');
+    try {
+        console.log('paso 3');
+        const response = await fetch('api/comentarios');
+        console.log(response);
+        console.log('paso 3 y medio');
+        const comments = await response.json();
+        console.log(comments);
 
-    /*  try {
-         const response = await fetch('api/tareas');
-         const tasks = await response.json();
+        // imprimo los comentarios
+        app.comments = comments;
 
-         // imprimo las tareas
-         app.tareas = tasks;
+    } catch (e) {
+        console.log('paso 4');
+    }
 
-     } catch (e) {
-         console.log(e);
-     } */
 }
 
 
-async function addTask() {
 
-    // armo la tarea
-    const task = {
+
+
+/* async function getComments() {
+    app.comments = list;
+
+     try {
+         const response = await fetch('api/tareas');
+         const tasks = await response.json();
+         // imprimo las tareas
+         app.tareas = tasks;
+     } catch (e) {
+         console.log(e);
+     } 
+} */
+
+async function addComment() {
+
+    //cargo el comentario
+    const comment = {
         titulo: document.querySelector('input[name=titulo]').value,
         descripcion: document.querySelector('textarea[name=descripcion]').value,
         prioridad: document.querySelector('select[name=prioridad]').value,

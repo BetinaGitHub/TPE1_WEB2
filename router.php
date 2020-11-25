@@ -34,7 +34,7 @@ switch ($params[0]) {
     break;    
     case 'logout':
         $controller = new AuthController();
-        $controller->logout();
+      //  $controller->logout();
         break;
         
     // ABM de maquinarias    
