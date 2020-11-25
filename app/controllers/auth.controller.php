@@ -57,20 +57,17 @@ class AuthController {
              if (empty($username) ||empty($email) || empty($password1) || empty($password2)){
                  $this->view->showFormLogin("Faltan datos obligatorios");
                  die();
-                }
-                else {
-                    if ($password1 !== $password2) {
-                        $this->view->showFormLogin("Las contraseñas no coinciden");    
-                }   
-               
              }
+                else {
+                    if ($password1 != $password2) {
+                        $this->view->showFormLogin("Las contraseñas no coinciden");    
+                    }   
+                } 
+            }
 
-     
-             // obtengo el usuario
-             $user = $this->model->getByEmail($email);
-     
+
              // si el usuario existe, y las contraseñas coinciden
-/*              if ($user && password_verify($pass, $user->password)) {
+             if ($user && password_verify($password, $user->password)) {
                  
                  // armo la sesion del usuario
                  $this->authHelper->login($user);
@@ -81,12 +78,12 @@ class AuthController {
              } else {
                  $this->view->showFormLogin("Usuario Desconocido");
              }
-  */
+ 
 
-          };
+          }
     }
 
     function logout() {
         $this->authHelper->logout();
     }
-}
+
