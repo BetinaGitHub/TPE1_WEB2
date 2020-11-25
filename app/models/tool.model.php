@@ -54,19 +54,23 @@ class ToolModel {
       
         if(isset($consulta)){
             $q = $consulta;
-        //    var_dump($q);
+            var_dump($q);
      
             $sql = "SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join 
-                rubro on maquinaria.idrubro = rubro.id WHERE (maquinaria.descripcion LIKE'%$q%')
-                OR (maquinaria.modelo LIKE'%$q%') OR (rubro.descripcion LIKE'%$q%') OR (maquinaria.precio >='$q')";
-               /*  OR (maquinaria.descrubro LIKE'%$q%') OR (maquinaria.modelo LIKE'%$q%') OR
-                (maquinaria.precio LIKE'%$q%')";  */
-                
+            rubro on maquinaria.idrubro = rubro.id WHERE (maquinaria.descripcion LIKE'%$q%')";
+        //        OR strval(maquinaria.modelo) LIKE '$q' OR maquinaria.precio >= '$q'OR (descrubro LIKE'%$q%')";";
+           var_dump($sql);
+           /*  $sql = "SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join 
+            rubro on maquinaria.idrubro = rubro.id WHERE (maquinaria.descripcion LIKE'%$q%')
+            OR (maquinaria.modelo LIKE'%$q%') OR (rubro.descripcion LIKE'%$q%')  OR 
+            (maquinaria.modelo LIKE'$q') OR (maquinaria.precio >='$q')"; */
+      
+          
             $query = $this->db->prepare($sql);
             $query->execute();
             $tools = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de herramientas
             var_dump($tools);
-            die();
+        //    die();
 
   /*                  
             If ($tools->num_rows > 0){  muestro datos}  else {echo 'no hay resultados de la busqueda'}; */

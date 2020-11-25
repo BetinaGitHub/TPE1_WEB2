@@ -85,7 +85,10 @@ class ToolController {
    //     var_dump($consulta);
     //    die();
         $tools = $this->model->getSearchAll($consulta);
-        $this->view->showTools($tools);
+     //   $tools = $this->model->getAll();
+        $rubros = $this->model1->getAll();
+        $this->view->abm_tools($tools,$rubros);
+     //   $this->view->showTools($tools);
     }
 
     /**

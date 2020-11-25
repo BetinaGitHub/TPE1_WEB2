@@ -10,19 +10,19 @@ const app = new Vue({
 
 let list = [{
         descripcion: 'Es un producto altamente vendible',
-        score: 9,
+        score: 5,
     },
     {
         descripcion: 'Usado reparado a nuevo',
-        score: 7,
+        score: 4,
     },
     {
         descripcion: 'Se puede canjear por cereal',
-        score: 8,
+        score: 5,
     },
     {
         descripcion: 'Lo último en el mercado',
-        score: 8,
+        score: 3,
     }
 
 ];
