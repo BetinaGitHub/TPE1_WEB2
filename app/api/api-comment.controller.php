@@ -12,9 +12,10 @@ class ApiCommentController {
         $this->view = new ApiView();
     }
 
-    public function getAll($params = null){
-        $params = [];
-        $comments = $this->model->getAll($params);
+    public function getAll(){
+     //   $params = [];
+    //    $idmaq = $params[':ID'];
+        $comments = $this->model->getAll();
         $this->view->response($comments,200);
      //   return $comments;
     }
@@ -22,9 +23,11 @@ class ApiCommentController {
 
     public function get($params = null){
         $idmaq = $params[':ID'];
-        $comment = $this->model->get($idmaq);
-        if ($comment){
-            $this->view->response($comment,200);
+        var_dump($idmaq);
+        $comments = $this->model->get($idmaq);
+      
+        if ($comments){
+            $this->view->response($comments,200);
         }
         else {
             $this->view->response('No hay comentarios',404);

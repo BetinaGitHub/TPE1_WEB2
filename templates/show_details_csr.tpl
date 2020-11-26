@@ -6,6 +6,7 @@
             </div>
             <div class="col-md-8">
                 <h2 class="text-white bg-dark"> Comentarios</h2>
+                
                 {include file="vue/comments.vue"}
             </div>
         </div>

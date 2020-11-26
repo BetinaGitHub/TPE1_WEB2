@@ -8,7 +8,7 @@
     <p class="card-text">{$tools->notas}</p>
     <p class="card-text">Modelo: {$tools->modelo}</p>
     <p class="card-text">Precio: {$tools->precio}</p>
-
+    <input name = "idtool" id="idtool" type = "hidden" value = {$tools->id}>
   </div> 
 </div>
 <a class="col-4 btn bg-dark text-white " href="{BASE_URL}">Volver</a>

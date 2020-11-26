@@ -29,13 +29,16 @@ let list = [{
 
 console.log(list);*/
 
+let idmaq = document.querySelector("#idtool").value;
+
+console.log(idmaq);
 
 document.addEventListener('DOMContentLoaded', e => {
-    console.log('paso 1');
-    getComments();
-
+    //  console.log('paso 1');
+    //getComments();
+    getCommentsbyIdTool();
     // document.querySelector('#task-form').addEventListener('submit', e => {
-    e.preventDefault();
+    //   e.preventDefault();
     //    addTask();
     // });
 
@@ -43,41 +46,38 @@ document.addEventListener('DOMContentLoaded', e => {
 
 
 async function getComments() {
-    //    app.comments = list;
-    console.log('paso 2');
+    const urlapi = '../api/comentarios';
     try {
-        console.log('paso 3');
-        const response = await fetch('api/comentarios');
+        const response = await fetch(urlapi);
         console.log(response);
-        console.log('paso 3 y medio');
-        const comments = await response.json();
-        console.log(comments);
+        if (response.status == 200) {
+            const datos = await response.json();
+            console.log(datos);
+            // imprimo los comentarios
+            app.comments = datos;
+        }
+    } catch (e) {
+        console.log('paso 4');
+    }
+}
 
-        // imprimo los comentarios
-        app.comments = comments;
+async function getCommentsbyIdTool() {
+    const urlapi = '../api/comentarios/';
+    try {
+        const response = await fetch(urlapi + idmaq);
+        console.log(response);
+        if (response.status == 200) {
+            const datos = await response.json();
+            console.log(datos);
+            // imprimo los comentarios
+            app.comments = datos;
+        }
 
     } catch (e) {
         console.log('paso 4');
     }
 
 }
-
-
-
-
-
-/* async function getComments() {
-    app.comments = list;
-
-     try {
-         const response = await fetch('api/tareas');
-         const tasks = await response.json();
-         // imprimo las tareas
-         app.tareas = tasks;
-     } catch (e) {
-         console.log(e);
-     } 
-} */
 
 async function addComment() {
 

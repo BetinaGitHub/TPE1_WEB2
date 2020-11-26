@@ -19,18 +19,18 @@ class CommentModel {
       $query = $this->db->prepare($sql);
       $query->execute();
       $comments = $query->fetchAll(PDO::FETCH_OBJ); 
-      var_dump($comments);
+     // var_dump($comments);
     //  die();
       return $comments;
     }
 
     function get($id) {
      // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
-      $sql = 'SELECT * FROM comentarios where id = ?';
+      $sql = 'SELECT * FROM comentarios';
       $query = $this->db->prepare($sql);
       $query->execute([$id]);
-      $comment = $query->fetch(PDO::FETCH_OBJ); 
-     return $comment;
+      $comments = $query->fetchAll(PDO::FETCH_OBJ); 
+      return $comments;
     }
 
     function remove($id) {
