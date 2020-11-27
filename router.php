@@ -60,6 +60,12 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->showDetails($id);
     break;
+  
+    case 'listar-csr':
+        $controller = new ToolController();
+     //   $id = $params[1];
+        $controller->showComentCSR();
+    break;
 
     case 'insert-tool':
         $controller = new ToolController();

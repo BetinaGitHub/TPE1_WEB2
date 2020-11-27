@@ -47,6 +47,7 @@ class ToolController {
         $rubros = $this->model1->getAll();
         $this->view->abm_rubros($rubros);
     }
+
     function showToolsconRubros() {
         // obtiene las herramientas del modelo
     //Betina    $tools = $this->model->getAllconRubros();
@@ -60,6 +61,10 @@ class ToolController {
         $tools = $this->model->getOne($id);
         // actualizo la vista
         $this->view->ShowDetails($tools);
+    }
+
+    function showComentCSR() {
+        $this->view->showComentCSR();
     }
 
      /**

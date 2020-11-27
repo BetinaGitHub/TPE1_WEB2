@@ -19,13 +19,12 @@ class ApiCommentController {
         $this->view->response($comments,200);
      //   return $comments;
     }
-  
-
+    
     public function get($params = null){
         $idmaq = $params[':ID'];
-        var_dump($idmaq);
+
         $comments = $this->model->get($idmaq);
-      
+        var_dump($comments);
         if ($comments){
             $this->view->response($comments,200);
         }
@@ -33,6 +32,8 @@ class ApiCommentController {
             $this->view->response('No hay comentarios',404);
         }
      }
+    
+
 
      public function delete($params = null){
         $idcomment = $params[':ID'];

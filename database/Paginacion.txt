@@ -1,0 +1,6 @@
+<form id="comform" action="insertar" method="POST" class="my-4" enctype="multipart/form-data">
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+
+https://www.discoduroderoer.es/paginacion-en-php/

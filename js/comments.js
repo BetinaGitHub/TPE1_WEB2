@@ -29,16 +29,16 @@ let list = [{
 
 console.log(list);*/
 
-let idmaq = document.querySelector("#idtool").value;
+//const idmaq = document.querySelector("#idtool").value;
 
-console.log(idmaq);
+//console.log(idmaq);
 
 document.addEventListener('DOMContentLoaded', e => {
-    //  console.log('paso 1');
-    //getComments();
-    getCommentsbyIdTool();
+    console.log('paso 1');
+    getComments();
+    //getCommentsbyIdTool();
     // document.querySelector('#task-form').addEventListener('submit', e => {
-    //   e.preventDefault();
+    e.preventDefault();
     //    addTask();
     // });
 
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
 
 async function getComments() {
-    const urlapi = '../api/comentarios';
+    const urlapi = 'api/comentarios';
     try {
         const response = await fetch(urlapi);
         console.log(response);
@@ -62,7 +62,8 @@ async function getComments() {
 }
 
 async function getCommentsbyIdTool() {
-    const urlapi = '../api/comentarios/';
+    const urlapi = 'api/comentarios/';
+    let idmaq = 7;
     try {
         const response = await fetch(urlapi + idmaq);
         console.log(response);

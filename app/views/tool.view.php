@@ -44,8 +44,15 @@ class ToolView {
         $smarty = new Smarty();
         $smarty -> assign('tools',$tools);
     
-        $smarty -> display('templates/show_details_csr.tpl');
+        $smarty -> display('templates/show_details1.tpl');
     }
+
+    function showComentCSR() {
+        $smarty = new Smarty();
+     //   $smarty -> assign('idmaq',$id);
+        $smarty->display('templates/show_coment_csr.tpl');  
+    }
+
     function showError($msg) {
         echo "<h1> ERROR!</h1>";
         echo "<h2> $msg </h2>";

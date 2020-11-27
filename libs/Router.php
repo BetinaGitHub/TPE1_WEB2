@@ -66,6 +66,7 @@ class Router {
     }
     
     public function addRoute ($url, $verb, $controller, $method) {
+        
         $this->routeTable[] = new Route($url, $verb, $controller, $method);
     }
 
