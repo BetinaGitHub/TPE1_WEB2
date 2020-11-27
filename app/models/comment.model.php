@@ -30,8 +30,8 @@ class CommentModel {
       $query = $this->db->prepare($sql);
       $query->execute([$id]);
       $comments = $query->fetchAll(PDO::FETCH_OBJ); 
-      var_dump($comments);
-      die();
+    //  var_dump($comments);
+     // die();
       return $comments;
     }
 

@@ -10,8 +10,9 @@ class ApiCommentController {
     function __construct() {
         $this->model = new CommentModel();
         $this->view = new ApiView();
+        $this->data = file_get_contents("php://input");
     }
-
+/* 
     public function getAll(){
      //   $params = [];
     //    $idmaq = $params[':ID'];
@@ -19,19 +20,21 @@ class ApiCommentController {
         $this->view->response($comments,200);
      //   return $comments;
     }
-    
-    public function get($params = null){
-        $idmaq = $params[':ID'];
+     */
 
-        $comments = $this->model->get($idmaq);
-        var_dump($comments);
-        if ($comments){
-            $this->view->response($comments,200);
-        }
-        else {
-            $this->view->response('No hay comentarios',404);
-        }
+    public function getAll(){
+        $comments = $this->model->getAll();
+    //    var_dump($comments);
+        $this->view->response($comments,200);
+       
+    }
+
+    public function getByIdTool($params = null){
+        $idtool = $params[':ID'];
+        $comments = $this->model->get($idtool);
+        $this->view->response($comments,200);
      }
+    
     
 
 
@@ -46,11 +49,18 @@ class ApiCommentController {
         }
      }
 
-     public function insert($params = null){
-        $idmaq = $_POST['idmaq'];
-        $iduser = $_POST['iduser'];
-        $comment = $_POST['comment'];
-        $puntaje = $_POST['puntaje'];
+    public function getData() {
+        return json_decode($this->data);
+    }
+
+     public function insert(){
+        $body = $this->getData();
+
+        // inserta la tarea
+        $idmaq = $body->idmaq;
+        $comment = $body->descripcion;
+        $iduser = $body->iduser;
+        $puntaje = $body->puntaje;
         
         // verifico campos obligatorios
         if (empty($idmaq) || empty($iduser)|| empty($comment)|| empty($puntaje)) {

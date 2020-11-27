@@ -60,13 +60,13 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->showDetails($id);
     break;
-  
+  /* 
     case 'listar-csr':
         $controller = new ToolController();
-     //   $id = $params[1];
-        $controller->showComentCSR();
+        $id = $params[1];
+        $controller->showComentCSR($id);
     break;
-
+ */
     case 'insert-tool':
         $controller = new ToolController();
         $controller->addTool();
@@ -114,8 +114,6 @@ switch ($params[0]) {
 
     case 'filtrar': // filtrar/:ID
         $controller = new ToolController();
-        var_dump($params);
-        die;
       //  $id = $params[1];
         $controller->showToolsFiltro($params[1]);
     break;

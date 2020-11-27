@@ -11,14 +11,14 @@
                 <p class="card-text">{$tools->notas}</p>
                 <p class="card-text">Modelo: {$tools->modelo}</p>
                 <p class="card-text">Precio: {$tools->precio}</p>
-                <input name = "idtool" id="idtool" type = "hidden" value = {$tools->id}>
+         {*        <input name = "idtool" id="idtool" type = "hidden" value = {$tools->id}> *}
                 </div> 
             </div>
             <a class="col-4 btn bg-dark text-white " href="{BASE_URL}">Volver</a>
         </div>
             <div class="col-md-8">
                 <h2 class="text-white bg-dark"> Comentarios</h2>
-                <a class="col-4 btn bg-dark text-white " href="{BASE_URL}listar-csr">Ver comentarios</a>
+                <a class="col-4 btn bg-dark text-white " href="{BASE_URL}listar-csr/{$tools->id}">Ver comentarios</a>
             </div>
         </div>
     </div>

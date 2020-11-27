@@ -29,14 +29,14 @@ let list = [{
 
 console.log(list);*/
 
-//const idmaq = document.querySelector("#idtool").value;
+let idmaq = document.querySelector("#idtool").value;
 
-//console.log(idmaq);
+console.log(idmaq);
 
 document.addEventListener('DOMContentLoaded', e => {
     console.log('paso 1');
-    getComments();
-    //getCommentsbyIdTool();
+    //getComments();
+    getCommentsbyIdTool();
     // document.querySelector('#task-form').addEventListener('submit', e => {
     e.preventDefault();
     //    addTask();
@@ -62,17 +62,16 @@ async function getComments() {
 }
 
 async function getCommentsbyIdTool() {
-    const urlapi = 'api/comentarios/';
-    let idmaq = 7;
+    //   const urlapi = 'api/comentarios/';
+    console.log('aca entra'),
+        console.log(idmaq);
     try {
-        const response = await fetch(urlapi + idmaq);
+        const response = await fetch('../api/comentarios/' + idmaq);
         console.log(response);
-        if (response.status == 200) {
-            const datos = await response.json();
-            console.log(datos);
-            // imprimo los comentarios
-            app.comments = datos;
-        }
+        const datos = await response.json();
+        console.log(datos);
+        // imprimo los comentarios
+        app.comments = datos;
 
     } catch (e) {
         console.log('paso 4');

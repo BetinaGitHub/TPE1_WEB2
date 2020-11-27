@@ -62,11 +62,11 @@ class ToolController {
         // actualizo la vista
         $this->view->ShowDetails($tools);
     }
-
-    function showComentCSR() {
-        $this->view->showComentCSR();
+/* 
+    function showComentCSR($id) {
+        $this->view->showComentCSR($id);
     }
-
+ */
      /**
      * muestra la lista de rubros
      */
