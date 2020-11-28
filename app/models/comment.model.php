@@ -30,7 +30,7 @@ class CommentModel {
       $query = $this->db->prepare($sql);
       $query->execute([$id]);
       $comments = $query->fetchAll(PDO::FETCH_OBJ); 
-    //  var_dump($comments);
+     //  var_dump($comments);
      // die();
       return $comments;
     }
@@ -42,10 +42,10 @@ class CommentModel {
          return $query;
        }
 
-    function insert($idmmaq,$iduser,$comment,$puntaje) {
-        $sql = 'INSERT INTO comentarios (idmmaq,iduser,comment,puntaje) VALUES (?,?,?,?)';
+    function insert($idmaq,$iduser,$comment,$puntaje) {
+        $sql = 'INSERT INTO comentarios (idmaq,iduser,comment,puntaje) VALUES (?,?,?,?)';
         $query = $this->db->prepare($sql);
-        $query->execute([$idmmaq,$iduser,$comment,$puntaje]);
+        $query->execute([$idmaq,$iduser,$comment,$puntaje]);
         return $this->db->lastInsertId();
     }   
 }

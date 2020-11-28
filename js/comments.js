@@ -29,7 +29,6 @@ const app = new Vue({
 const idmaq = document.querySelector("#idtool").value;
 
 document.addEventListener('DOMContentLoaded', e => {
-    console.log('paso 1');
     getCommentsbyIdTool();
     e.preventDefault();
 });
@@ -52,14 +51,12 @@ async function getComments() {
 } */
 
 async function getCommentsbyIdTool() {
-    //   const urlapi = 'api/comentarios/';
-    // console.log('aca entra'),
-    //console.log(idmaq);
+
     try {
         const response = await fetch('../api/comentarios/' + idmaq);
-        //        console.log(response);
+        //       console.log(response);
         const datos = await response.json();
-        //        console.log(datos);
+        //       console.log(datos);
         // imprimo los comentarios
         app.comments = datos;
 
@@ -86,7 +83,7 @@ async function getCommentsbyIdTool() {
        } 
 
 } */
-async function addComment() {
+/* async function addComment() {
 
     //cargo el comentario
     const comment = {
@@ -111,4 +108,4 @@ async function addComment() {
     }
 
 
-}
+} */

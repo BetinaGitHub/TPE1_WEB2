@@ -50,23 +50,40 @@ class ApiCommentController {
         return json_decode($this->data);
     }
 
-     public function insert(){
+   /*  public function add($params = null) {
+        $body = $this->getData();
+        $titulo       = $body->titulo;
+        $descripcion  = $body->descripcion;
+        $prioridad    = $body->prioridad;
+
+        $id = $this->model->insert($titulo, $descripcion, $prioridad);
+
+        if ($id > 0) {
+            $task = $this->model->get($id);
+            $this->view->response($task, 200);
+        }
+        else { 
+            $this->view->response("No se pudo insertar", 500);
+        }
+    } */
+  
+     public function insert($params = null){
         $body = $this->getData();
 
-        // inserta la tarea
-        $idmaq = $body->idmaq;
-        $comment = $body->descripcion;
-        $iduser = $body->iduser;
+        // inserta el comentario
+        $comment = $body->comentario;
         $puntaje = $body->puntaje;
-        
+        $idmaq = $body->idmaq;
+        $iduser = $body->iduser;
+          
         // verifico campos obligatorios
         if (empty($idmaq) || empty($iduser)|| empty($comment)|| empty($puntaje)) {
             $this->view->response('Faltan datos obligatorios',404);
             die();
-        }
-        // inserto la herramienta en la DB
+        } 
+
+        // inserto el comentario en la DB
         $this->model->insert($idmaq,$iduser,$comment,$puntaje);
-        // redirigimos al listado
-        //header("Location: " . BASE_URL . "abm-tools"); 
+    
     }
 }
