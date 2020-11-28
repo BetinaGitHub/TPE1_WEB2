@@ -16,18 +16,65 @@ class UserModel {
      * Devuelve un usuario dando un email.
      */
     public function getByEmail($email) {
-        $query = $this->db->prepare('SELECT * FROM usuario WHERE email = ?');
+        $sql = 'SELECT * FROM usuario WHERE email = ?';
+        $query = $this->db->prepare($sql);
         $query->execute([$email]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
     public function insert($username,$email,$passw,$rol) {
-        // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
-        $query = $this->db->prepare('INSERT INTO user (username,email,passw,rol) VALUES (?,?,?,?)');
+        $sql = 'INSERT INTO usuario (username,email,passw,rol) VALUES (?,?,?,?)';
+        $query = $this->db->prepare($sql);
         $query->execute([$username,$email,$passw,$rol]);
-         // 3. Obtengo y devuelo el ID de la herramienta nueva
         return $this->db->lastInsertId();
-        die;
     }
+
+/*     function addUser (){
+        $this->view->showRegisterform();
+         if (    (isset($_REQUEST['email']) && ($_REQUEST['email'] != null)) && 
+        (isset($_REQUEST['password']) && ($_REQUEST['password'] != null)) &&
+        (isset($_REQUEST['rePassword']) && ($_REQUEST['rePassword'] != null))){ 
+
+        $newUser=$_POST['email'];
+        $newPass=$_POST['password'];
+        $newRepass=$_POST['rePassword'];
+            $newUser=$_POST['email'];
+            $newPass=$_POST['password'];
+            $newRepass=$_POST['rePassword'];
+
+        if($newPass==$newRepass){
+
+          $encryptPass= password_hash ($newPass , PASSWORD_DEFAULT );  
+          $success=$this->model->insertnewUser($newUser,$encryptPass);
+            if($newPass==$newRepass){
+              $encryptPass= password_hash ($newPass , PASSWORD_DEFAULT );  
+              $success=$this->model->insertnewUser($newUser,$encryptPass);
+
+            if ($success){
+                $this->view->showConfirmLogin('addUser','Se creó usuario');
+                $user = $this->model->getByEmail($newUser);
+                $this->authHelper->login($user);
+            }
+            else{
+                $this->view->showErrorLogin('addUser','No se pudo crear el usuario');
+                if ($success){
+                    $this->view->showConfirmLogin('addUser','Se creó usuario');
+                    $user = $this->model->getByEmail($newUser);
+                    $this->authHelper->login($user);
+                }
+                else{
+                    $this->view->showErrorLogin('addUser','No se pudo crear el usuario');
+                }
+            }
+             else {
+                 $this->view->showErrorLogin('addUser','No coinciden contraseñas');
+             }
+        }
+        else {
+            $this->view->showErrorLogin('addUser','No coinciden contraseñas');
+        }
+     }
+    } */
+
 
 }

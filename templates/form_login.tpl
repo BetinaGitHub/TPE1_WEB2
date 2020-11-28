@@ -8,15 +8,15 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="passw" name="passw">
             </div>
             {if $error}
                 <div class="alert alert-danger">
                     {$error}
                 </div>
             {/if}
-            <button type="submit" name="ingresar" value="Ingresar" class="btn btn-primary bg-dark">Ingresar</button>
-            <button type="submit" name="registrar" value="Registrar" class="btn btn-primary bg-dark">Registrase</button>
+            <button type="submit" name="ingresar" value="ingresar" class="btn btn-primary bg-dark">Ingresar</button>
         </form>
-    </div>
+        <a href='register' class="fourth btn btn-primary bg-dark"> Registrarse</a>
+        </div>
 {include file='footer.tpl'}

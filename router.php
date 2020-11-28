@@ -24,19 +24,32 @@ switch ($params[0]) {
     break;
 
     //Manejo de Usuarios
+    //tpl de logueo de Usuarios
     case 'login':
         $controller = new AuthController();
         $controller->showLogin();
         break;
+    //Verificacion de Usuarios
     case 'verify':
+            $controller = new AuthController();
+            $controller->loginUser();
+    break;   
+    //tpl de registro de nuevos Usuarios 
+    case 'register':
+            $controller = new AuthController();
+            $controller->showRegister();
+            break; 
+    //Verificacion de Nuevos Usuarios
+    case 'verifyNewUser':
         $controller = new AuthController();
-        $controller->loginUser();
-    break;    
+        $controller->loginNewUser();
+    break;
+    //Loguot de usuarios   
     case 'logout':
         $controller = new AuthController();
-      //  $controller->logout();
+        $controller->logout();
         break;
-        
+    //Manejo de Mquinarias    
     // ABM de maquinarias    
     case 'abm-tools':
         $controller = new ToolController();

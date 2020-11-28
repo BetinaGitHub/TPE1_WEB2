@@ -16,74 +16,74 @@ class AuthController {
 
     public function showLogin(){
         $this->view->showFormLogin();
+        
+    }
+    public function showRegister(){
+        $this->view->showFormRegister();
     }
 
     public function loginUser() {
-        if (isset($_POST['ingresar'])){
             $email = $_POST['email'];
-            $password = $_POST['password'];
-            $rol = $_POST['rol'];
-            echo $rol;
+            $passw = $_POST['passw'];
+           // $rol = $_POST['rol'];
             // verifico campos obligatorios
-            if (empty($email) || empty($password)) {
+            if (empty($email) || empty($passw)) {
                 $this->view->showFormLogin("Faltan datos obligatorios");
                 die();
             }
     
             // obtengo el usuario
             $user = $this->model->getByEmail($email);
-    
             // si el usuario existe, y las contraseñas coinciden
-            if ($user && password_verify($password, $user->password)) {
-                
+            if ($user && password_verify($passw, $user->passw)) {
                 // armo la sesion del usuario
-                $this->authHelper->login($user);
+                $this->authHelper->initSession($user);
                 //$logueado = true;
-    
-                // redirigimos al listado
-                   header("Location: " . BASE_URL .'abm-tools'); 
+                //redirigimos al listado
+                header("Location: " . BASE_URL .'abm-tools'); 
             } else {
                 $this->view->showFormLogin("Usuario Desconocido");
             }
         }
-          else {
-             $this->view->showFormRegister(); 
-             $username = $_POST['username']; 
-             $email = $_POST['email'];
-             $password1 = $_POST['password1'];
-             $password2 = $_POST['password1'];
-             $rol = 2;
-             // verifico campos obligatorios
-             if (empty($username) ||empty($email) || empty($password1) || empty($password2)){
-                 $this->view->showFormLogin("Faltan datos obligatorios");
-                 die();
-             }
-                else {
-                    if ($password1 != $password2) {
-                        $this->view->showFormLogin("Las contraseñas no coinciden");    
-                    }   
-                } 
+
+    public function loginNewUser() {
+        $username = $_POST['username']; 
+        $email = $_POST['email'];
+        $password1 = $_POST['password1'];
+        $password2 = $_POST['password2'];
+        $rol = 2;
+        // verifico campos obligatorios
+        if (empty($username) ||empty($email) || empty($password1) || empty($password2)){
+            $this->view->showFormRegister("Faltan datos obligatorios");
+            die();
+        }
+        else {
+            if ($password1 != $password2) {
+                $this->view->showFormRegister("Las contraseñas no coinciden");  
+                die;  
+            }   
+        } 
+        // si el usuario ya existe le avisa
+        $user = $this->model->getByEmail($email);
+        if ($user) {
+           $this->view->showFormRegister("El email $email ya está registrado");
+           die;
+        }       
+        else {
+            $password_hash = password_hash($password1 , PASSWORD_DEFAULT ); 
+            $newuser = $this->model->insert($username,$email,$password_hash,$rol);
+            if ($newuser) {
+                $this->authHelper->initSession($email);
+                header("Location: " . BASE_URL .'abm-tools'); 
             }
-
-
-             // si el usuario existe, y las contraseñas coinciden
-             if ($user && password_verify($password, $user->password)) {
-                 
-                 // armo la sesion del usuario
-                 $this->authHelper->login($user);
-                 //$logueado = true;
-     
-                 // redirigimos al listado
-                    header("Location: " . BASE_URL .'abm-tools'); 
-             } else {
-                 $this->view->showFormLogin("Usuario Desconocido");
-             }
- 
-
-          }
+            else {
+                $this->view->showFormRegister("El usuario no pudo ser creado");
+                die;
+            }
+        }   
     }
-
-   /*  function logout() {
+    function logout() {
         $this->authHelper->logout();
     }
- */
+}
+ 
