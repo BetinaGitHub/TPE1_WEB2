@@ -4,21 +4,21 @@
 <!---------Alta/Edit maquinarias------------>
 <div class="container">
   <div class="col-12">
-    <form action="{BASE_URL}{$accion}" method="POST" class="my-2">
+    <form action="{BASE_URL}{$accion}" method="POST" class="my-2" enctype="multipart/form-data">
       <input name="id" value="{if isset($tool)}{$tool->id}{/if}" type="hidden" >
       <div class="row">
         <div class="col-3">
           <div class="form-group">
             <label>Rubro</label>
-                    <select class="form-control" name="rubro">
-                        {foreach from=$rubros item=rubro}
-                            <option value="{$rubro->id}"
-                                {if {$rubro->id} == {$tool->idRubro}} 
-                                    {" selected"}
-                                {/if}   
-                                >{$rubro->descripcion}</option>
-                        {/foreach}
-                    </select>
+              <select class="form-control" name="rubro">
+                {foreach from=$rubros item=rubro}
+                  <option value="{$rubro->id}"
+                    {if {$rubro->id} == {$tool->idRubro}} 
+                      {" selected"}
+                    {/if}   
+                  >{$rubro->descripcion}</option>
+                 {/foreach}
+              </select>
           </div>
         </div>
         <div class="col-4">
@@ -47,7 +47,17 @@
           <textarea name="notas" class="form-control" rows="2">{if isset($tool)} {$tool->notas}{/if}</textarea>
         </div>
       </div>
-      <button type="submit" class="btn btn-dark btn-sm">{$boton}</button>
+      
+      <div class="row">
+        <div class="form-group col-12">
+          <label>Seleccionar imagen de la herramienta</label>
+          <input type="file" name="input_name" id="imageToUpload" >
+        </div>
+      
+        <div class="col-3 form-group">
+          <button type="submit" class="btn btn-dark btn-sm">{$boton}</button>
+        </div>
+      </div>
     </form>
   </div>
 </div>
