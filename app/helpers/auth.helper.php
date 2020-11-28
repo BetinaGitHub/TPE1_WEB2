@@ -9,7 +9,7 @@ class AuthHelper {
     function checkLogged() {
         session_start();
         if (!isset($_SESSION['ID_USER'])) {
-            header("Location: " . BASE_URL . "login");
+            header("Location: " . BASE_URL . 'login');
             die(); 
         }
     }   
@@ -20,7 +20,7 @@ class AuthHelper {
         header("Location: " . BASE_URL . 'login');
     }    
 
-    function login($user) {
+    function initSession($user) {
         session_start();
         $_SESSION['ID_USER'] = $user->id;
         $_SESSION['EMAIL_USER'] = $user->email;

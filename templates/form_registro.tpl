@@ -1,7 +1,7 @@
 {include 'header.tpl'}
 <main class="container"> <!-- inicio del contenido pricipal -->
     <div class="mt-5 w-25 mx-auto">
-        <form method="POST" action="verify">
+        <form method="POST" action="verifyNewUser">
             <div class="form-group">
                 <label for="username">Apellido y Nombre</label>
                 <input type="username" class="form-control" id="username" name="username" aria-describedby="usernameHelp">
