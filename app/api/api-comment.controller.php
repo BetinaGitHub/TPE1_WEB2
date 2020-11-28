@@ -34,13 +34,10 @@ class ApiCommentController {
         $comments = $this->model->get($idtool);
         $this->view->response($comments,200);
      }
-    
-    
-
-
-     public function delete($params = null){
+      
+     public function remove($params = null){
         $idcomment = $params[':ID'];
-        $comment = $this->model->get($idcomment);
+        $comment = $this->model->remove($idcomment);
         if ($comment){       
            $this->view->response("El comentario ha sido borrado ",200);
         }

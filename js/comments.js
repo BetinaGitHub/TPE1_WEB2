@@ -5,46 +5,36 @@ const app = new Vue({
     data: {
         comments: [], // esto es como un assign de smarty
     },
-});
+    methods: {
+        rmComment: async function(idcom) {
 
-/*
-let list = [{
-        descripcion: 'Es un producto  vendible',
-        score: 5,
-    },
-    {
-        descripcion: 'Usado reparado a nuevo',
-        score: 4,
-    },
-    {
-        descripcion: 'Se puede canjear por cereal',
-        score: 5,
-    },
-    {
-        descripcion: 'Lo último en el mercado',
-        score: 3,
+            let url = '../api/comentarios/' + idcom;
+
+            try {
+                const response = await fetch(url, { 'method': 'DELETE' })
+                    .then(response => {
+                        console.log(response);
+                        response.text();
+                        getCommentsbyIdTool();
+                    });
+            } catch (e) {
+                console.log(e);
+            }
+        }
     }
 
-];
+});
 
-console.log(list);*/
 
-let idmaq = document.querySelector("#idtool").value;
-
-console.log(idmaq);
+const idmaq = document.querySelector("#idtool").value;
 
 document.addEventListener('DOMContentLoaded', e => {
     console.log('paso 1');
-    //getComments();
     getCommentsbyIdTool();
-    // document.querySelector('#task-form').addEventListener('submit', e => {
     e.preventDefault();
-    //    addTask();
-    // });
-
 });
 
-
+/* 
 async function getComments() {
     const urlapi = 'api/comentarios';
     try {
@@ -59,26 +49,43 @@ async function getComments() {
     } catch (e) {
         console.log('paso 4');
     }
-}
+} */
 
 async function getCommentsbyIdTool() {
     //   const urlapi = 'api/comentarios/';
-    console.log('aca entra'),
-        console.log(idmaq);
+    // console.log('aca entra'),
+    //console.log(idmaq);
     try {
         const response = await fetch('../api/comentarios/' + idmaq);
-        console.log(response);
+        //        console.log(response);
         const datos = await response.json();
-        console.log(datos);
+        //        console.log(datos);
         // imprimo los comentarios
         app.comments = datos;
 
     } catch (e) {
-        console.log('paso 4');
+        console.log(e);
     }
 
 }
+/* async function removeComment(idcom) {
+    //   const urlapi = 'api/comentarios/';
+    console.log('aca entra');
+    console.log(idcom);
 
+    /*    try {
+           const response = await fetch('../api/comentarios/' + idcomment);
+           console.log(response);
+           const datos = await response.json();
+           console.log(datos);
+           // imprimo los comentarios
+           app.comments = datos;
+
+       } catch (e) {
+           console.log('paso 4');
+       } 
+
+} */
 async function addComment() {
 
     //cargo el comentario

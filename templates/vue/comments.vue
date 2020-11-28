@@ -44,12 +44,11 @@
                             
                     <td>{{ comment.comment }}</td>
                     <td>{{ comment.puntaje }}</td>
-                    <td class="d-flex no-wrap"><a class="btn btn-dark btn-sm" href="">Eliminar</a></td>
+                    <td class="d-flex no-wrap">
+                       <button class='btn btn-dark btn-sm' v-on:click="rmComment(comment.id)">Eliminar</button>
+                    </td>
+
                 </tr>     
-                 
-                <tr>
-              
-                </tr> 
             </tbody>
         </table>
     </div> 
