@@ -1,13 +1,20 @@
 {* <div class='container w-50'>   *}
 <div class="card">
-  <img class="card-img-top sm img-thumbnail"  src="../img/sembradora.jpg" style='max-width: 300px' alt="Crucianelli">    
-    {* <img class="card-img-top sm img-thumbnail"  value={$tools->foto} style='max-width: 300px' alt="Crucianelli"> *} 
 
+{*   <img class="card-img-top sm img-thumbnail"  src="../img/sembradora.jpg" style='max-width: 300px' alt="Crucianelli">   *}  
+  <div class="form-group">
+    {if $tools->imagen}
+      <img width="280px" src="../uploads/{$tools->imagen}">
+    {else}
+      <p> No hay imagen </p>
+    {/if}
+  </div>
   <div class="card-body">
     <h4 class="card-title">{$tools->descripcion}</h5>
     <p class="card-text">{$tools->notas}</p>
     <p class="card-text">Modelo: {$tools->modelo}</p>
     <p class="card-text">Precio: {$tools->precio}</p>
+   
     <input name = "idtool" id="idtool" type = "hidden" value = {$tools->id}>
   </div> 
 </div>

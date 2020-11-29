@@ -78,10 +78,10 @@ class ToolModel {
     /**
      * Inserta la herramienta en la base de datos
      */
-    function insert($rubro,$descripcion,$modelo,$notas,$precio) {
+    function insert($rubro,$descripcion,$modelo,$notas,$precio,$destino) {
         // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
-        $query = $this->db->prepare('INSERT INTO maquinaria (idRubro,descripcion,modelo,notas,precio) VALUES (?,?,?,?,?)');
-        $query->execute([$rubro,$descripcion,$modelo,$notas,$precio]);
+        $query = $this->db->prepare('INSERT INTO maquinaria (idRubro,descripcion,modelo,notas,precio,imagen) VALUES (?,?,?,?,?,?)');
+        $query->execute([$rubro,$descripcion,$modelo,$notas,$precio,$destino]);
  
         // 3. Obtengo y devuelo el ID de la herramienta nueva
         return $this->db->lastInsertId();

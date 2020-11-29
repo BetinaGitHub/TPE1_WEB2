@@ -51,7 +51,7 @@
       <div class="row">
         <div class="form-group col-12">
           <label>Seleccionar imagen de la herramienta</label>
-          <input type="file" name="input_name" id="imageToUpload" >
+          <input type="file" name="img_name" id="imageToUpload" >
         </div>
       
         <div class="col-3 form-group">

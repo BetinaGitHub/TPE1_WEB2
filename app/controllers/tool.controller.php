@@ -105,14 +105,29 @@ class ToolController {
         $rubro = $_POST['rubro'];
         $modelo = $_POST['modelo'];
         $precio = $_POST['precio'];
-
+        var_dump($_POST);
+        var_dump($_FILES['img_name']);
+      
+        // verifico si cargó imagen
+        if (isset($_FILES['img_name'])){
+           
+            $uploads = getcwd() . '/uploads';  /// carpeta donde guardo las imagenes */
+            var_dump($uploads);
+            
+            $path =tempnam($uploads,$_FILES['img_name']['name']) ;  
+            var_dump($path);
+            move_uploaded_file($_FILES['img_name']['tmp_name'],$path); 
+            $path=basename($path);
+            echo $path;
+        }
+        
         // verifico campos obligatorios
         if (empty($descripcion) || empty($rubro)) {
             $this->view->showError('Faltan datos obligatorios');
             die();
         }
         // inserto la herramienta en la DB
-        $this->model->insert($rubro,$descripcion,$modelo,$notas,$precio);
+        $this->model->insert($rubro,$descripcion,$modelo,$notas,$precio,$path);
         // redirigimos al listado
         header("Location: " . BASE_URL . "abm-tools"); 
     }
