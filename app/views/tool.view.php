@@ -14,6 +14,7 @@ class ToolView {
     function showRubros($rubros) {
         $smarty = new Smarty();
         $smarty -> assign('rubros',$rubros);
+        
         $smarty -> display('templates/show_rubros.tpl');
     }
     function showRubrosFiltrados($id) {

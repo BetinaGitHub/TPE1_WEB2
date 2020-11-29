@@ -12,7 +12,7 @@
       {foreach from=$tools item=$tool}              
         <tr>
           <td>{$tool->descripcion}</td>
-          {* <td>{$rubro->descripcion}</td> *}
+          <td>{$tool->descrubro}</td>
           <td>{$tool->modelo}</td>
           <td>{$tool->notas}</td> 
           <td class="d-flex no-wrap">

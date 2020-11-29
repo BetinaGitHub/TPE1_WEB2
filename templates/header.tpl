@@ -24,8 +24,8 @@
           <li class="nav-item active">
             <a class="nav-link" href="{BASE_URL}abm-tools">Administrar Datos<span class="sr-only">(current)</span></a>
           </li>
-            {if !isset($smarty.session.EMAIL_USER)}
-           <li class="nav-item ml-auto">
+          {if !isset($smarty.session.EMAIL_USER)}
+          <li class="nav-item ml-auto">
             <a class="nav-link" href="{BASE_URL}login">Login</a>
           </li>
           {/if}    

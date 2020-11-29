@@ -1,6 +1,7 @@
 ﻿<?php
 include_once 'app/helpers/db.helper.php';
 
+
 class ToolModel {
 
     private $db;
@@ -87,10 +88,10 @@ class ToolModel {
         return $this->db->lastInsertId();
         die;
     }
-    function update($rubro,$descripcion,$modelo,$notas,$precio,$id) {
-            $sql ='UPDATE maquinaria SET idRubro=?,descripcion=?,modelo=?,notas=?,precio=? where id=?';
+    function update($rubro,$descripcion,$modelo,$notas,$precio,$path,$id) {
+            $sql ='UPDATE maquinaria SET idRubro=?,descripcion=?,modelo=?,notas=?,precio=?,imagen=? where id=?';
             $query = $this->db->prepare($sql);
-            $query->execute([$rubro,$descripcion,$modelo,$notas,$precio,$id]);
+            $query->execute([$rubro,$descripcion,$modelo,$notas,$precio,$path,$id]);
         return;
     }  
 

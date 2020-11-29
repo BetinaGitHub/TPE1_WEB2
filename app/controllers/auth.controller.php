@@ -72,7 +72,7 @@ class AuthController {
         else {
             $password_hash = password_hash($password1 , PASSWORD_DEFAULT ); 
             $newuser = $this->model->insert($username,$email,$password_hash,$rol);
-          //  var_dump($newuser);
+            var_dump($newuser);
 
             if ($newuser) {
                 $user = $this->model->getByEmail($email);
