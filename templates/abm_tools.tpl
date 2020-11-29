@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-{include file="show_solapas.tpl"}
+{include file="show_solapas.tpl"} 
 
 <!---------Alta/Edit maquinarias------------>
 <div class="container">

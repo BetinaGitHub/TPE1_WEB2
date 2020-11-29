@@ -18,10 +18,11 @@ class ToolController {
     }
 
     function showHome() {
+        $this->authHelper->checkLogged();
         $rubros = $this->model1->getAll();
         $this->view->showRubros($rubros);
         $tools = $this->model->getAll();
-        $this->view->showTools($tools);
+        $this->view->showTools($tools);  
     }
 
     /**
@@ -36,6 +37,19 @@ class ToolController {
         //die;
     }
 
+    function showToolsPaged() {
+        // Obtengo el total de maquinarias
+        $tot_tools = $this->model->totTools();
+        var_dump($tot_tools);
+
+        //$this->view->showTools($tools);
+        //var_dump($tools);
+        //die;
+    }
+
+
+
+
     function abm_tools() {
         $this->authHelper->checkLogged();
         $tools = $this->model->getAll();
@@ -44,6 +58,7 @@ class ToolController {
     }
 
     function abm_rubros() {
+        $this->authHelper->checkLogged();
         $rubros = $this->model1->getAll();
         $this->view->abm_rubros($rubros);
     }

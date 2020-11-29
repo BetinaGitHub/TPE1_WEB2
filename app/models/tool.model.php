@@ -94,10 +94,24 @@ class ToolModel {
         return;
     }  
 
-
- 
     function remove($id) {  
         $query = $this->db->prepare('DELETE FROM maquinaria WHERE id = ?');
         $query->execute([$id]);
+    }
+
+    function totTools() {
+        $sql = 'SELECT count(*) FROM maquinaria';
+        $query = $this->db->prepare($sql);
+        $query->execute() ;
+        $total = $query->fetch(PDO::FETCH_NUM);
+        return $total[0];
+                        
+    }
+    function toolsPage($desde, $cantidad) {
+        $sql = 'SELECT * FROM maquinaria LIMIT ' . $desde . ', ' . $cantidad ;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        $tools = $query->fetchAll(PDO::FETCH_OBJ);
+        return $tools;
     }
 }
