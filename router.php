@@ -81,6 +81,7 @@ switch ($params[0]) {
     break;
  */
     case 'insert-tool':
+        var_dump('paso insert');
         $controller = new ToolController();
         $controller->addTool();
         break;
