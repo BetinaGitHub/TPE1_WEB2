@@ -72,8 +72,13 @@ class AuthController {
         else {
             $password_hash = password_hash($password1 , PASSWORD_DEFAULT ); 
             $newuser = $this->model->insert($username,$email,$password_hash,$rol);
+          //  var_dump($newuser);
+
             if ($newuser) {
-                $this->authHelper->initSession($email);
+                $user = $this->model->getByEmail($email);
+                var_dump($user);
+            // die();
+                $this->authHelper->initSession($user);
                 header("Location: " . BASE_URL .'abm-tools'); 
             }
             else {
