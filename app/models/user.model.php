@@ -22,6 +22,14 @@ class UserModel {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
+    public function get($user) {
+        $sql = 'SELECT * FROM usuario WHERE id = ?';
+        $query = $this->db->prepare($sql);
+        $query->execute([$user]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+
     public function insert($username,$email,$passw,$rol) {
         $sql = 'INSERT INTO usuario (username,email,passw,rol) VALUES (?,?,?,?)';
         $query = $this->db->prepare($sql);
