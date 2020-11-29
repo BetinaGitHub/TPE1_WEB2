@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 {include file="header.tpl"}
 {include file="show_solapas.tpl"} 
+=======
+{include file="header.tpl"} 
+{include file="show_solapas.tpl"}
+>>>>>>> fe5b1d858f5a0c7fe11299aadfa67530cebc68f4
 
 <!---------Alta/Edit maquinarias------------>
 <div class="container">
@@ -51,7 +56,7 @@
       <div class="row">
         <div class="form-group col-12">
           <label>Seleccionar imagen de la herramienta</label>
-          <input type="file" name="img_name" id="imageToUpload" >
+          <input type="file" name="img_name" id="imageToUpload" value={if isset($tool)} {$tool->imagen}{/if} >
         </div>
       
         <div class="col-3 form-group">

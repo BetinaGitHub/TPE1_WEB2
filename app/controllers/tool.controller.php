@@ -102,13 +102,9 @@ class ToolController {
 
     function showSearchTools() {
         $consulta = $_POST['search'];
-   //     var_dump($consulta);
-    //    die();
         $tools = $this->model->getSearchAll($consulta);
-     //   $tools = $this->model->getAll();
         $rubros = $this->model1->getAll();
         $this->view->abm_tools($tools,$rubros);
-     //   $this->view->showTools($tools);
     }
 
     /**
@@ -120,20 +116,14 @@ class ToolController {
         $rubro = $_POST['rubro'];
         $modelo = $_POST['modelo'];
         $precio = $_POST['precio'];
-        var_dump($_POST);
-        var_dump($_FILES['img_name']);
-      
+ 
         // verifico si cargó imagen
         if (isset($_FILES['img_name'])){
-           
-            $uploads = getcwd() . '/uploads';  /// carpeta donde guardo las imagenes */
-            var_dump($uploads);
-            
+            /* Carpeta donde quedan las imagenes */
+            $uploads = getcwd() . '/uploads';  
             $path =tempnam($uploads,$_FILES['img_name']['name']) ;  
-            var_dump($path);
             move_uploaded_file($_FILES['img_name']['tmp_name'],$path); 
             $path=basename($path);
-            echo $path;
         }
         
         // verifico campos obligatorios
@@ -191,7 +181,16 @@ class ToolController {
         $idRubro = $_POST['rubro'];
         $modelo = $_POST['modelo'];
         $precio = $_POST['precio'];
-        $this->model->update($idRubro,$descripcion,$modelo,$notas,$precio,$id);
+
+        if (isset($_FILES['img_name'])){
+            /* Carpeta donde quedan las imagenes */
+            $uploads = getcwd() . '/uploads';  
+            $path =tempnam($uploads,$_FILES['img_name']['name']) ;  
+            move_uploaded_file($_FILES['img_name']['tmp_name'],$path); 
+            $path=basename($path);
+        }
+ 
+        $this->model->update($idRubro,$descripcion,$modelo,$notas,$precio,$path,$id);
         header("Location: " . BASE_URL . "abm-tools"); 
     }
     
