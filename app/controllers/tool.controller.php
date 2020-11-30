@@ -25,6 +25,33 @@ class ToolController {
         $this->view->showTools($tools);  
     }
 
+    function showHomePagged($pagina = null) {
+        $this->authHelper->checkLogged();
+        $rubros = $this->model1->getAll();
+        $this->view->showRubros($rubros);
+        /* Obtengo el total de maquinarias   y defino los item por pagina y la cant tot de paginas*/ 
+        $itemsxPagina = 3;
+        $tot_tools = $this->model->totTools();
+        $tot_paginas = ceil($tot_tools/$itemsxPagina);
+        if (!isset($pagina)) {
+            $pagina = 1;
+        }    
+ 
+        if ($pagina > $tot_paginas) {
+                $inicio = 0;
+                $pagina = 1;
+            }
+        else {
+            $inicio = ($pagina - 1) * $itemsxPagina;
+        };
+
+        $tools = $this->model->toolsPage($inicio, $itemsxPagina);
+        if (isset($tools)) {
+            $this->view->showToolsPaged($tools, $pagina, $tot_paginas);
+        }
+    } 
+    
+
     /**
      * Muestra la lista de herramientas
      */
@@ -33,22 +60,7 @@ class ToolController {
         $tools = $this->model->getAll();
         // actualizo la vista
         $this->view->showTools($tools);
-        //var_dump($tools);
-        //die;
     }
-
-    function showToolsPaged() {
-        // Obtengo el total de maquinarias
-        $tot_tools = $this->model->totTools();
-        var_dump($tot_tools);
-
-        //$this->view->showTools($tools);
-        //var_dump($tools);
-        //die;
-    }
-
-
-
 
     function abm_tools() {
         $this->authHelper->checkLogged();
@@ -147,7 +159,7 @@ class ToolController {
             $this->view->showError('Faltan datos obligatorios');
             die();
         }
-        $id = $this->model1->insert_rubro($desc_rubro);
+        $this->model1->insert_rubro($desc_rubro);
         header("Location: " . BASE_URL . "modi-rubros"); 
     }
   

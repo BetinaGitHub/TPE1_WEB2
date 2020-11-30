@@ -29,7 +29,11 @@
               <a class="nav-link" href="{BASE_URL}login">Login</a>
             </li>    
           {else}
+<<<<<<< HEAD
             <li class="nav-item ml-auto">
+=======
+            <li class="nav-item ml-auto"> 
+>>>>>>> 399c3f59bfb381c14e8178ab116d41d84552c85c
               <a class="nav-link" href="{BASE_URL}logout">{$smarty.session.EMAIL_USER}(LOGOUT)</a>
             </li>               	
           {/if}

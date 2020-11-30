@@ -18,11 +18,16 @@ $params = explode('/', $action);
 // determina que camino seguir según la acción
 switch ($params[0]) {
     // Mostrar todas las maquinarias    
-    case 'home':
+    /* case 'home':
         $controller = new ToolController();
         $controller->showHome();
-    break;
-
+    break; */
+    case 'home':
+        $controller = new ToolController();
+        $pagina = $params[1];
+        $controller->showHomePagged($pagina);
+    break;    
+ 
     //Manejo de Usuarios
     //tpl de logueo de Usuarios
     case 'login':
@@ -54,8 +59,7 @@ switch ($params[0]) {
     case 'abm-tools':
         $controller = new ToolController();
         $controller->abm_tools();
-    break;
-    
+    break; 
     case 'editar-tool': 
         $controller = new ToolController();
      //   $id = $params[1];
@@ -75,7 +79,6 @@ switch ($params[0]) {
     break;
  
     case 'insert-tool':
-        var_dump('paso insert');
         $controller = new ToolController();
         $controller->addTool();
         break;
