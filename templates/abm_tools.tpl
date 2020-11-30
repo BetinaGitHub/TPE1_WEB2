@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-{include file="header.tpl"}
-{include file="show_solapas.tpl"} 
-=======
 {include file="header.tpl"} 
 {include file="show_solapas.tpl"}
->>>>>>> fe5b1d858f5a0c7fe11299aadfa67530cebc68f4
 
 <!---------Alta/Edit maquinarias------------>
 <div class="container">

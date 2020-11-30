@@ -11,6 +11,15 @@ class ToolView {
         $smarty -> display('templates/show_tools_filtradas.tpl');
     }
 
+    function showToolsPaged($tools, $pagina, $tot_paginas)
+    {
+        $smarty = new Smarty();
+        $smarty->assign('tools',$tools);
+        $smarty->assign('actual_page', $pagina);
+        $smarty->assign('tot_paginas',$tot_paginas);
+        $smarty->display('templates/showToolsPag.tpl');
+    } 
+
     function showRubros($rubros) {
         $smarty = new Smarty();
         $smarty -> assign('rubros',$rubros);
@@ -28,6 +37,8 @@ class ToolView {
         $smarty -> assign('tools',$tools);
         $smarty -> display('templates/show_tools_filtradas.tpl');
     }
+
+
 
     function showRubroEditar ($rubro){
         $smarty = new Smarty();

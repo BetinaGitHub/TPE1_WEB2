@@ -35,7 +35,7 @@ class ToolModel {
     */
     /*  Antes se llamaba function getAllconFiltro($id) */
        function getAllporRubro($idRubro) {
-        $query = $this->db->prepare('SELECT id, descripcion, modelo, notas FROM maquinaria where idRubro = ?');
+        $query = $this->db->prepare('SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join rubro on maquinaria.idrubro = rubro.id where idRubro = ?');
         $query->execute([$idRubro]);
         $tools = $query->fetchAll(PDO::FETCH_OBJ); 
         return $tools;
@@ -109,7 +109,8 @@ class ToolModel {
                         
     }
     function toolsPage($desde, $cantidad) {
-        $sql = 'SELECT * FROM maquinaria LIMIT ' . $desde . ', ' . $cantidad ;
+        $sql = "SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join 
+            rubro on maquinaria.idrubro = rubro.id LIMIT $desde,$cantidad";
         $query = $this->db->prepare($sql);
         $query->execute();
         $tools = $query->fetchAll(PDO::FETCH_OBJ);

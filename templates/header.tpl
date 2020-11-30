@@ -25,19 +25,11 @@
             <a class="nav-link" href="{BASE_URL}abm-tools">Administrar Datos<span class="sr-only">(current)</span></a>
           </li>
           {if !isset($smarty.session.EMAIL_USER)}
-<<<<<<< HEAD
 	          <li class="nav-item ml-auto">
               <a class="nav-link" href="{BASE_URL}login">Login</a>
             </li>    
           {else}
-=======
-          <li class="nav-item ml-auto">
-            <a class="nav-link" href="{BASE_URL}login">Login</a>
-          </li>
-          {/if}    
-          {if isset($smarty.session.EMAIL_USER)}
->>>>>>> fe5b1d858f5a0c7fe11299aadfa67530cebc68f4
-            <li class="nav-item ml-auto">
+            <li class="nav-item ml-auto"> 
               <a class="nav-link" href="{BASE_URL}logout">{$smarty.session.EMAIL_USER}(LOGOUT)</a>
             </li>               	
           {/if}
