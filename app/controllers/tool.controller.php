@@ -72,7 +72,8 @@ class ToolController {
     }
 
     function showDetails($id) {
-        // obtiene las herramientas del modelo
+        // Muestra los detalles de la herramienta
+        $this->authHelper->checkLogged();
         $tools = $this->model->getOne($id);
         // actualizo la vista
         $this->view->ShowDetails($tools);

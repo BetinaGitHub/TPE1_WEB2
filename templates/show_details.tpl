@@ -6,7 +6,7 @@
     {if $tools->imagen}
       <img width="280px" src="../uploads/{$tools->imagen}">
     {else}
-      <p> No hay imagen </p>
+      <h3 class="bg-info text-white text-center">No hay imagen ilustrativa</h3>
     {/if}
   </div>
   <div class="card-body">

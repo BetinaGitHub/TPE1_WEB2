@@ -49,7 +49,7 @@
     </div>
 
     <!--  JS para CSR -->
-     <script src="../js/comments.js"></script>   
+      <script src="../js/comments.js"></script>    
      <script src="../js/addcomment.js"></script> 
     {include file="footer.tpl"}
 </body>

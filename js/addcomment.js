@@ -9,10 +9,11 @@
 
 }); */
 
+const urlapi = '../api/comentarios/';
 
 document.addEventListener('DOMContentLoaded', e => {
-    //  getCommentsbyIdTool();
-    //   e.preventDefault();
+    getCommentsbyIdTool();
+    //  e.preventDefault();
 
     let form_alta_comment = document.querySelector("#form_alta_comment");
     let score = document.querySelector("input[name=r_button_score]:checked");
@@ -20,17 +21,12 @@ document.addEventListener('DOMContentLoaded', e => {
     let det_comment = document.querySelector("#det_comment");
     const idmaq = document.querySelector("#idtool").value;
 
-    getCommentsbyIdTool();
+    //   getCommentsbyIdTool();
+    let score = document.querySelector("input[name=r_button_score]:checked").value;
     let iduser = 1;
-    console.log(idmaq);
 
-
-
-    //e.preventDefault();
     form_alta_comment.addEventListener("submit", function(e) {
-        console.log('Entro al alta');
-        let score = document.querySelector("input[name=r_button_score]:checked").value;
-        e.preventDefault();
+
         const comentario = {
             "comentario": det_comment.value,
             "puntaje": score,
@@ -45,7 +41,7 @@ document.addEventListener('DOMContentLoaded', e => {
     async function addComment(comentario) {
 
         try {
-            const response = await fetch('../api/comentarios', {
+            const response = await fetch(urlapi, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(comentario)
@@ -59,19 +55,16 @@ document.addEventListener('DOMContentLoaded', e => {
         } catch (error) {
             console.log(error);
         }
-        //    e.preventDefault();
+        e.preventDefault();
     }
 
     async function getCommentsbyIdTool() {
-        //   const urlapi = 'api/comentarios/';
-        console.log('aca entra');
-        //console.log(idmaq);
+
         try {
-            const response = await fetch('../api/comentarios/' + idmaq);
-            //        console.log(response);
+            const response = await fetch(urlapi + idmaq);
             const datos = await response.json();
-            //        console.log(datos);
-            // imprimo los comentarios
+
+            /* imprimo los comentarios*/
             app.comments = datos;
 
         } catch (e) {

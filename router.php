@@ -73,13 +73,7 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->showDetails($id);
     break;
-  /* 
-    case 'listar-csr':
-        $controller = new ToolController();
-        $id = $params[1];
-        $controller->showComentCSR($id);
-    break;
- */
+ 
     case 'insert-tool':
         var_dump('paso insert');
         $controller = new ToolController();
