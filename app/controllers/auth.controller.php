@@ -117,4 +117,11 @@ class AuthController {
         $users = $this->model->getAll();
         $this->view->show_user_editar($user,$users);
     }
+
+    
+    function eliminar_user($id){
+      //  $this->authHelper->checkLogged();
+        $this->model->remove($id);
+        header("Location: " . BASE_URL .'abm-users');
+    }
 }

@@ -35,7 +35,7 @@ class ToolController {
         $rubros = $this->model1->getAll();
         $this->view->showRubros($rubros);
         /* Obtengo el total de maquinarias   y defino los item por pagina y la cant tot de paginas*/ 
-        $itemsxPagina = 3;
+        $itemsxPagina = 4;
         $tot_tools = $this->model->totTools();
         $tot_paginas = ceil($tot_tools/$itemsxPagina);
         if (!isset($pagina)) {
@@ -195,12 +195,18 @@ class ToolController {
         if (isset($_FILES['img_name'])){
             /* Carpeta donde quedan las imagenes */
             $uploads = getcwd() . '/uploads';  
-            $path =tempnam($uploads,$_FILES['img_name']['name']) ;  
-            move_uploaded_file($_FILES['img_name']['tmp_name'],$path); 
-            $path=basename($path);
+            $path_img =tempnam($uploads,$_FILES['img_name']['name']) ;  
+            move_uploaded_file($_FILES['img_name']['tmp_name'],$path_img); 
+            $path_img=basename($path_img);
         }
- 
-        $this->model->update($idRubro,$descripcion,$modelo,$notas,$precio,$path,$id);
+        if (isset($_POST['borrarImg'])){
+            $path_img =($_POST['nombreImg']);
+            $path = './uploads/' . $path_img;
+            $path_img=null; 
+            unlink($path);  
+        } 
+          //  $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
+        $this->model->update($idRubro,$descripcion,$modelo,$notas,$precio,$path_img,$id);
         header("Location: " . BASE_URL . "abm-tools"); 
     }
     

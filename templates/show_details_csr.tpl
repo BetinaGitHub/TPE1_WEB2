@@ -6,8 +6,9 @@
             </div>
            
             <div class="col-md-8">
-                    
+          
                 <h2 class="text-white bg-dark"> Comentarios</h2>
+                {if isset($smarty.session.EMAIL_USER)}  
                 <div class="form-group col-md-6">
                     <form id="form_alta_comment" name="form_alta_comment" class="form-inline">
                         <div class="form-group col-md-12">
@@ -39,9 +40,12 @@
                              <textarea id="det_comment" name="det_comment" class="form-control md-8"  placeholder="Escribe tu comentario" ></textarea>
                            </div>
                         </div>
-                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Agregar</button>
+                       
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Agregar</button>
+                        
                     </form>
-                   {include file="vue/comments.vue"}
+                    {/if}
+                    {include file="vue/comments.vue"}
                 </div>
             </div>
            

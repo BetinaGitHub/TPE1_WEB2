@@ -8,7 +8,7 @@
             <tr>
                 <th scope="col">Comentario</th>
                 <th scope="col">Puntuación</th>
-                <th scope="col">Acción</th>           
+                <th scope="col" v-if="rol == 0">Acción</th>           
             </tr>
             </thead> 
             <tbody>
@@ -16,8 +16,8 @@
                             
                     <td>{{ comment.comment }}</td>
                     <td>{{ comment.puntaje }}</td>
-                    <td class="d-flex no-wrap">
-                       <button class='btn btn-dark btn-sm' v-on:click="rmComment(comment.id)">Eliminar</button>
+                    <td class="d-flex no-wrap" v-if="rol == 0">
+                       <button class='btn btn-dark btn-sm' v-on:click="rmComment(comment.id)" v-if="rol == 0">Eliminar</button>
                     </td>
 
                 </tr>     

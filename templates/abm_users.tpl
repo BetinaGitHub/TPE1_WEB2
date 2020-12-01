@@ -68,7 +68,7 @@
       
             <td class="d-flex ">
               <a class="btn btn-success btn-sm" href="{BASE_URL}modi-rol/{$user->id}">Editar</a>
-              <a class="btn btn-danger btn-sm"  href="{BASE_URL}eliminar/{$user->id}">Eliminar</a>
+              <a class="btn btn-danger btn-sm"  href="{BASE_URL}eliminar-user/{$user->id}">Eliminar</a>
             </td>
           </tr>     
         {/foreach} 

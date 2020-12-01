@@ -9,27 +9,20 @@
 
 }); */
 
-const urlapi = '../api/comentarios/';
+//const urlapi = '../api/comentarios/';
 
 document.addEventListener('DOMContentLoaded', e => {
     getCommentsbyIdTool();
-    //  e.preventDefault();
 
     let form_alta_comment = document.querySelector("#form_alta_comment");
-    let score = document.querySelector("input[name=r_button_score]:checked");
-    //   document.querySelector('input[name=nameOfradio]:checked').value;
     let det_comment = document.querySelector("#det_comment");
     const idmaq = document.querySelector("#idtool").value;
-
-    //   getCommentsbyIdTool();
-    let score = document.querySelector("input[name=r_button_score]:checked").value;
     let iduser = 1;
-
     form_alta_comment.addEventListener("submit", function(e) {
-
+        let score = document.querySelector("input[name=r_button_score]:checked");
         const comentario = {
             "comentario": det_comment.value,
-            "puntaje": score,
+            "puntaje": score.value,
             "idmaq": idmaq,
             "iduser": iduser
         }

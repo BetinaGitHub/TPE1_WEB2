@@ -49,6 +49,9 @@ class UserModel {
         $query->execute([$username,$email,$passw,$rol]);
         return $this->db->lastInsertId();
     }
-
+    public function remove($id) {
+        $query = $this->db->prepare('DELETE FROM usuario WHERE id = ?');
+        $query->execute([$id]);
+    }
 
 }
