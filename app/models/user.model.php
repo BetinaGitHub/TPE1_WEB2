@@ -36,12 +36,12 @@ class UserModel {
         $query->execute([$user]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
-    public function post($user,$rol) {
-        $sql = 'UPDATE usuario SET usuario.rol = ?  WHERE id = ?';
+    public function post($rol,$user) {
+        $sql = 'UPDATE usuario SET rol = ?  WHERE id = ?';
         $query = $this->db->prepare($sql);
         $query->execute([$rol,$user]);
-    }
 
+    }
 
     public function insert($username,$email,$passw,$rol) {
         $sql = 'INSERT INTO usuario (username,email,passw,rol) VALUES (?,?,?,?)';

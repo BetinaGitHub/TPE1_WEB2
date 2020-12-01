@@ -106,12 +106,13 @@ class ToolModel {
         $query->execute() ;
         $total = $query->fetch(PDO::FETCH_NUM);
         return $total[0];
-                        
     }
     function toolsPage($desde, $cantidad) {
         $sql = "SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join 
-            rubro on maquinaria.idrubro = rubro.id LIMIT $desde,$cantidad";
+            rubro on maquinaria.idrubro = rubro.id LIMIT :desde,:cantidad";
         $query = $this->db->prepare($sql);
+        $query->bindParam(':desde', $desde, PDO::PARAM_INT);
+        $query->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
         $query->execute();
         $tools = $query->fetchAll(PDO::FETCH_OBJ);
         return $tools;
