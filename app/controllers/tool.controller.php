@@ -18,15 +18,20 @@ class ToolController {
     }
 
     function showHome() {
-        $this->authHelper->checkLogged();
+        if(session_status() == PHP_SESSION_ACTIVE) {
+            $this->authHelper->checkLogged();
+        }
+        
         $rubros = $this->model1->getAll();
         $this->view->showRubros($rubros);
         $tools = $this->model->getAll();
         $this->view->showTools($tools);  
     }
 
-    function showHomePagged($pagina = null) {
-        $this->authHelper->checkLogged();
+    function showHomePagged($pagina) {
+        if(session_status() == PHP_SESSION_ACTIVE) {
+            $this->authHelper->checkLogged();
+        }
         $rubros = $this->model1->getAll();
         $this->view->showRubros($rubros);
         /* Obtengo el total de maquinarias   y defino los item por pagina y la cant tot de paginas*/ 
@@ -90,14 +95,6 @@ class ToolController {
         // actualizo la vista
         $this->view->ShowDetails($tools);
     }
-/* 
-    function showComentCSR($id) {
-        $this->view->showComentCSR($id);
-    }
- */
-     /**
-     * muestra la lista de rubros
-     */
 
     function showRubros() {
         // obtiene los rubros del modelo

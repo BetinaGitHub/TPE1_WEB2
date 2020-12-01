@@ -26,7 +26,7 @@
       {/if}
     </tbody> 
   </table>
-  <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center">
     <ul class="pagination">   
       <li class="page-item">
           <a class="page-link" {if $actual_page> 1} href= '{BASE_URL}home/{$actual_page-1}' {else} href= '{BASE_URL}home/1' {/if} tabindex="-1">&laquo;Anterior</a>
@@ -44,7 +44,7 @@
           <a class="page-link" {if $actual_page == (($tot_paginas) +1)|string_format:"%d"} href='{BASE_URL}home/{$actual_page}' {else} href='{BASE_URL}home/{$actual_page+1}' {/if}>&raquo;Siguiente</a>
       </li> 
     </ul>
-</nav>
+    </nav>
 </div> 
 {include file="footer.tpl" }    
 
