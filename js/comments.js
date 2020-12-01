@@ -7,7 +7,6 @@ const app = new Vue({
     },
     methods: {
         rmComment: async function(idcom) {
-            //          let url = urlapi + idcom;
 
             try {
                 const response = await fetch((urlapi + idcom), { 'method': 'DELETE' })
@@ -26,6 +25,7 @@ const app = new Vue({
 
 const urlapi = '../api/comentarios/';
 const idmaq = document.querySelector("#idtool").value;
+let rol = 1;
 
 document.addEventListener('DOMContentLoaded', e => {
     getCommentsbyIdTool();

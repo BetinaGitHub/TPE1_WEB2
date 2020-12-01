@@ -73,10 +73,15 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->update_rol();
     break; 
+    case 'eliminar-user':
+        $controller = new AuthController();
+        $controller->eliminar_user($params[1]);
+    break; 
     case 'modi-rol':
         $controller = new AuthController();
         $controller->modi_rol($params[1]);
     break; 
+    
     case 'editar-tool': 
         $controller = new ToolController();
         $controller->editTool($params[1]);
