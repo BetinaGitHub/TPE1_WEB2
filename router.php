@@ -24,7 +24,12 @@ switch ($params[0]) {
     break; */
     case 'home':
         $controller = new ToolController();
-        $pagina = $params[1];
+        if (!isset($params[1])){
+            $pagina = 1;
+        }
+        else {
+            $pagina = $params[1];
+        };
         $controller->showHomePagged($pagina);
     break;    
  
@@ -60,9 +65,20 @@ switch ($params[0]) {
         $controller = new ToolController();
         $controller->abm_tools();
     break; 
+    case 'abm-users':
+        $controller = new AuthController();
+        $controller->abm_users();
+    break; 
+    case 'updateRol':
+        $controller = new AuthController();
+        $controller->update_rol();
+    break; 
+    case 'modi-rol':
+        $controller = new AuthController();
+        $controller->modi_rol($params[1]);
+    break; 
     case 'editar-tool': 
         $controller = new ToolController();
-     //   $id = $params[1];
         $controller->editTool($params[1]);
     break;
 

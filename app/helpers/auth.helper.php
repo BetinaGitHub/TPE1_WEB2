@@ -2,12 +2,23 @@
 
 class AuthHelper {
     public function __construct() {
+
     }
-    
 
     function checkLogged() {
-        $inactivo = 1000;
- /*       if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+         if(session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+            if (!isset($_SESSION)){
+                header("Location: " . BASE_URL . 'login');
+                die(); 
+            }
+        }   
+    }
+        /* 
+        if ((isset($_SESSION['ID_USER']) && ($_SESSION['ROL_USER'] == "admin")) { */
+      
+    /*    $inactivo = 1000;
+        if(session_status() !== PHP_SESSION_ACTIVE) session_start();
         //session_start();
          if(isset($_SESSION["timeout"])){
             // Calcula si paso el tiempo de TIMEOUT
@@ -17,12 +28,8 @@ class AuthHelper {
                 header("Location: " . BASE_URL . 'login');
             }
         } */
-        if(session_status() !== PHP_SESSION_ACTIVE) session_start();
-        if (!isset($_SESSION['ID_USER']) ) {
-            header("Location: " . BASE_URL . 'login');
-            die(); 
-        }
-    }   
+        
+    
 
     function logout() {
         session_start();
@@ -31,14 +38,19 @@ class AuthHelper {
     }    
 
     function initSession($user) {
-        //if(session_status() !== PHP_SESSION_ACTIVE) session_start();
-        session_start();
+        if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+        //session_start();
         $_SESSION['ID_USER'] = $user->id;
         $_SESSION['USER_NAME'] = $user->username;
         $_SESSION['EMAIL_USER'] = $user->email;
-        $_SESSION['ROL_USER'] = $user->rol;
+        if ($user->rol == 0 || $user->rol == 1) {
+            $_SESSION['ROL_USER'] = 1;
+        }
+        else {
+            $_SESSION['ROL_USER'] = 2;
         $_SESSION['TIMEOUT'] = time();
-     }
+        }
+    }
 
 /*      session_start();
      // Establecer tiempo de vida de la sesión en segundos
@@ -52,7 +64,6 @@ class AuthHelper {
              header("Location: " . BASE_URL . 'login');
          }
      }
-     // El siguiente key se crea cuando se inicia sesión
      $_SESSION["timeout"] = time(); */
 
 }

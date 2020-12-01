@@ -21,21 +21,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav d-flex w-100">
-          <li class="nav-item active">
-            <a class="nav-link" href="{BASE_URL}abm-tools">Administrar Datos<span class="sr-only">(current)</span></a>
-          </li>
+           <li class="nav-item active">
+                <a class="nav-link" href="{BASE_URL}abm-tools">Administrar Datos<span class="sr-only">(current)</span></a>
+            </li>
+          
           {if !isset($smarty.session.EMAIL_USER)}
 	          <li class="nav-item ml-auto">
               <a class="nav-link" href="{BASE_URL}login">Login</a>
             </li>    
           {else}
-<<<<<<< HEAD
-            <li class="nav-item ml-auto">
-=======
             <li class="nav-item ml-auto"> 
->>>>>>> 399c3f59bfb381c14e8178ab116d41d84552c85c
-              <a class="nav-link" href="{BASE_URL}logout">{$smarty.session.EMAIL_USER}(LOGOUT)</a>
-            </li>               	
+             {if ($smarty.session.ROL_USER == 1)}
+                 <a class="nav-link" href="{BASE_URL}logout">{$smarty.session.EMAIL_USER}( Administrador  ) (LOGOUT)</a>
+              {else}
+                <a class="nav-link" href="{BASE_URL}logout">{$smarty.session.EMAIL_USER}( Invitado  ) (LOGOUT)</a>
+             {/if}  
+            </li>            	
           {/if}
         </ul>
       </div>

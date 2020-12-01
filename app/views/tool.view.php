@@ -38,8 +38,6 @@ class ToolView {
         $smarty -> display('templates/show_tools_filtradas.tpl');
     }
 
-
-
     function showRubroEditar ($rubro){
         $smarty = new Smarty();
         $smarty -> assign('rubro',$rubro);
@@ -55,7 +53,6 @@ class ToolView {
     function showDetails($tools) {
         $smarty = new Smarty();
         $smarty -> assign('tools',$tools);
-    
         $smarty -> display('templates/show_details_csr.tpl');
     }
 /* 

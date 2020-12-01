@@ -38,9 +38,12 @@ class AuthController {
             if ($user && password_verify($passw, $user->passw)) {
                 // armo la sesion del usuario
                 $this->authHelper->initSession($user);
-                //$logueado = true;
-                //redirigimos al listado
-                header("Location: " . BASE_URL .'abm-tools'); 
+                if ($_SESSION['ROL_USER'] == 1) {
+                    header("Location: " . BASE_URL .'abm-tools');
+                } 
+                else {
+                    header("Location: " . BASE_URL .'home'); 
+                }
             } else {
                 $this->view->showFormLogin("Usuario Desconocido");
             }
@@ -76,10 +79,13 @@ class AuthController {
 
             if ($newuser) {
                 $user = $this->model->getByEmail($email);
-                var_dump($user);
-            // die();
                 $this->authHelper->initSession($user);
-                header("Location: " . BASE_URL .'abm-tools'); 
+                if ((isset($_SESSION) && ($_SESSION['ROL_USER'] == 1))) {
+                    header("Location: " . BASE_URL .'abm-tools');
+                } 
+                else {
+                    header("Location: " . BASE_URL .'home'); 
+                }
             }
             else {
                 $this->view->showFormRegister("El usuario no pudo ser creado");
@@ -91,4 +97,24 @@ class AuthController {
         $this->authHelper->logout();
     }
 
+    function abm_users(){
+        $this->authHelper->checkLogged();
+        $users = $this->model->getAll();
+        $this->view->abm_users($users); 
+    }
+    function update_rol(){
+        $this->authHelper->checkLogged();
+        $id = $_POST['id'];
+        $rol = $_POST['rol'];
+        $this->model->post($rol,$id);
+        header("Location: " . BASE_URL .'abm-users');
+    }
+
+
+    function modi_rol($id){
+        $this->authHelper->checkLogged();
+        $user = $this->model->get($id);
+        $users = $this->model->getAll();
+        $this->view->show_user_editar($user,$users);
+    }
 }
