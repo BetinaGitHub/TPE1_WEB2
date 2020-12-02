@@ -8,6 +8,8 @@
             <div class="col-md-8">
                 <h2 class="text-white bg-dark"> Comentarios</h2>
                 {if (isset($smarty.session.EMAIL_USER) && ($smarty.session.ROL_USER == 1))}  
+                <input name = "iduser" id="iduser" type = "hidden" value = {$smarty.session.ID_USER}>   
+                <input name = "roluser" id="roluser" type = "hidden" value = {$smarty.session.ROL_USER}>  
                 <div class="form-group col-md-6">
                     <form id="form_alta_comment" name="form_alta_comment" class="form-inline">
                         <div class="form-group col-md-12">
@@ -43,6 +45,9 @@
                           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Agregar</button>
                         
                     </form>
+                    {else}
+                      <input name = "iduser" id="iduser" type = "hidden" value = 0>   
+                      <input name = "roluser" id="roluser" type = "hidden" value = 2>   
                     {/if}
                     {include file="vue/comments.vue"}
                 </div>

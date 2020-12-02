@@ -5,6 +5,7 @@ class AuthHelper {
     }
 
     function checkLogged() {
+    
         if(session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
            if (!isset($_SESSION)){
@@ -42,6 +43,7 @@ class AuthHelper {
         $_SESSION['ID_USER'] = $user->id;
         $_SESSION['USER_NAME'] = $user->username;
         $_SESSION['EMAIL_USER'] = $user->email;
+        
         if ($user->rol == 0 || $user->rol == 1) {
             $_SESSION['ROL_USER'] = 1;
             header("Location: " . BASE_URL . 'abm_tools');

@@ -3,8 +3,8 @@
 const app = new Vue({
     el: "#app",
     data: {
-        rol = 2,
-        comments: [], // esto es como un assign de smarty
+        comments: [],
+        roluser: 0,
     },
 
     methods: {
@@ -27,9 +27,13 @@ const app = new Vue({
 
 const urlapi = '../api/comentarios/';
 const idmaq = document.querySelector("#idtool").value;
-/* let rol = 1; */
 
 document.addEventListener('DOMContentLoaded', e => {
+
+    let roluser = document.querySelector("#roluser").value;
+    let iduser = document.querySelector("#iduser").value;
+
+    console.log('roluser', roluser);
     getCommentsbyIdTool();
     e.preventDefault();
 });
@@ -40,8 +44,7 @@ async function getCommentsbyIdTool() {
         const response = await fetch(urlapi + idmaq);
         const datos = await response.json();
         app.comments = datos;
-        //app.rol = $_SESSION[USER_ROL];
-        console.log(app.rol);
+        app.roluser = roluser;
 
     } catch (e) {
         console.log(e);
