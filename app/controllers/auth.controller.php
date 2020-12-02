@@ -98,12 +98,12 @@ class AuthController {
     }
 
     function abm_users(){
-        $this->authHelper->checkLogged();
+        //$this->authHelper->checkLogged();
         $users = $this->model->getAll();
         $this->view->abm_users($users); 
     }
     function update_rol(){
-        $this->authHelper->checkLogged();
+       // $this->authHelper->checkLogged();
         $id = $_POST['id'];
         $rol = $_POST['rol'];
         $this->model->post($rol,$id);
@@ -112,7 +112,7 @@ class AuthController {
 
 
     function modi_rol($id){
-        $this->authHelper->checkLogged();
+        //$this->authHelper->checkLogged();
         $user = $this->model->get($id);
         $users = $this->model->getAll();
         $this->view->show_user_editar($user,$users);

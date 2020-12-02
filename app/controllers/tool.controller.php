@@ -15,23 +15,17 @@ class ToolController {
         $this->model1 = new RubroModel();
         $this->view = new ToolView();
         $this->authHelper = new AuthHelper();
+        $this->authHelper->checkLogged();
     }
 
     function showHome() {
-        if(session_status() == PHP_SESSION_ACTIVE) {
-            $this->authHelper->checkLogged();
-        }
-        
         $rubros = $this->model1->getAll();
         $this->view->showRubros($rubros);
         $tools = $this->model->getAll();
         $this->view->showTools($tools);  
     }
 
-    function showHomePagged($pagina) {
-        if(session_status() == PHP_SESSION_ACTIVE) {
-            $this->authHelper->checkLogged();
-        }
+    function showHomePagged($pagina = null) {
         $rubros = $this->model1->getAll();
         $this->view->showRubros($rubros);
         /* Obtengo el total de maquinarias   y defino los item por pagina y la cant tot de paginas*/ 
@@ -55,7 +49,6 @@ class ToolController {
             $this->view->showToolsPaged($tools, $pagina, $tot_paginas);
         }
     } 
-    
 
     /**
      * Muestra la lista de herramientas
@@ -68,14 +61,18 @@ class ToolController {
     }
 
     function abm_tools() {
-        $this->authHelper->checkLogged();
-        $tools = $this->model->getAll();
-        $rubros = $this->model1->getAll();
-        $this->view->abm_tools($tools,$rubros);
+        if ((isset($_SESSION['ROL_USER']) && ($_SESSION['ROL_USER']) == 1)) {
+            $tools = $this->model->getAll();
+            $rubros = $this->model1->getAll();
+            $this->view->abm_tools($tools,$rubros);
+        }else{
+            header("Location: " . BASE_URL . 'login');
+        }
+
     }
 
     function abm_rubros() {
-        $this->authHelper->checkLogged();
+        //$this->authHelper->checkLogged();
         $rubros = $this->model1->getAll();
         $this->view->abm_rubros($rubros);
     }
@@ -90,7 +87,7 @@ class ToolController {
 
     function showDetails($id) {
         // Muestra los detalles de la herramienta
-        $this->authHelper->checkLogged();
+       // $this->authHelper->checkLogged();
         $tools = $this->model->getOne($id);
         // actualizo la vista
         $this->view->ShowDetails($tools);

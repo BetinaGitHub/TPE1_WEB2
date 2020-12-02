@@ -6,9 +6,8 @@
             </div>
            
             <div class="col-md-8">
-          
                 <h2 class="text-white bg-dark"> Comentarios</h2>
-                {if isset($smarty.session.EMAIL_USER)}  
+                {if (isset($smarty.session.EMAIL_USER) && ($smarty.session.ROL_USER == 1))}  
                 <div class="form-group col-md-6">
                     <form id="form_alta_comment" name="form_alta_comment" class="form-inline">
                         <div class="form-group col-md-12">

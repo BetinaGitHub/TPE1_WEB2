@@ -17,19 +17,15 @@ $params = explode('/', $action);
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
-    // Mostrar todas las maquinarias    
-    /* case 'home':
-        $controller = new ToolController();
-        $controller->showHome();
-    break; */
+    // Mostrar todas las maquinarias con Paginado   
     case 'home':
         $controller = new ToolController();
-        if (!isset($params[1])){
+         if (!isset($params[1])){
             $pagina = 1;
         }
         else {
             $pagina = $params[1];
-        };
+        };  
         $controller->showHomePagged($pagina);
     break;    
  
@@ -59,29 +55,14 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->logout();
         break;
-    //Manejo de Mquinarias    
-    // ABM de maquinarias    
+
+    //Manejo de Maquinarias    
+    // ABM de maquinarias (Aca va cuando ingresa como Aministrador)    
     case 'abm-tools':
         $controller = new ToolController();
         $controller->abm_tools();
     break; 
-    case 'abm-users':
-        $controller = new AuthController();
-        $controller->abm_users();
-    break; 
-    case 'updateRol':
-        $controller = new AuthController();
-        $controller->update_rol();
-    break; 
-    case 'eliminar-user':
-        $controller = new AuthController();
-        $controller->eliminar_user($params[1]);
-    break; 
-    case 'modi-rol':
-        $controller = new AuthController();
-        $controller->modi_rol($params[1]);
-    break; 
-    
+
     case 'editar-tool': 
         $controller = new ToolController();
         $controller->editTool($params[1]);
@@ -110,6 +91,25 @@ switch ($params[0]) {
         $controller->deleteTool($id);
     break;          
 
+    //Manejo de usuarios
+    case 'abm-users':
+        $controller = new AuthController();
+        $controller->abm_users();
+    break; 
+    case 'updateRol':
+        $controller = new AuthController();
+        $controller->update_rol();
+    break; 
+    case 'eliminar-user':
+        $controller = new AuthController();
+        $controller->eliminar_user($params[1]);
+    break; 
+    case 'modi-rol':
+        $controller = new AuthController();
+        $controller->modi_rol($params[1]);
+    break; 
+   
+    //Manejo de Rubros
     // Listar rubros
     case 'listar-rubros':
         $controller = new ToolController();
@@ -144,12 +144,13 @@ switch ($params[0]) {
         $controller->delRubro($id);
     break;
 
-    case 'filtrar': // filtrar/:ID
+    // Manejo de Herramientas Filtradas
+     case 'filtrar': // filtrar/:ID
         $controller = new ToolController();
       //  $id = $params[1];
         $controller->showToolsFiltro($params[1]);
-    break;
-
+    break; 
+    
     case 'search-tools': 
         $controller = new ToolController();
     //    $id = $params[1];

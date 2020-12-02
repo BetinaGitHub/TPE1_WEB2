@@ -51,12 +51,8 @@ class ToolModel {
     }
 
     function getSearchAll($consulta) {
-    //    $sql = 'SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join rubro on maquinaria.idrubro = rubro.id';
-      
         if(isset($consulta)){
-            $q = $consulta;
-       //     var_dump($q);
-     
+            $q = $consulta;     
             $sql = "SELECT maquinaria.*, rubro.descripcion as descrubro FROM maquinaria inner join 
             rubro on maquinaria.idrubro = rubro.id 
             WHERE ((maquinaria.descripcion LIKE'%$q%') 
@@ -68,10 +64,6 @@ class ToolModel {
             $query = $this->db->prepare($sql);
             $query->execute();
             $tools = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de herramientas
-         //   var_dump($tools);
-        //    die();
-  /*                  
-            If ($tools->num_rows > 0){  muestro datos}  else {echo 'no hay resultados de la busqueda'}; */
             return $tools;
         }
     }

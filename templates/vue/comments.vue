@@ -1,7 +1,5 @@
 {literal}
 <section id="app">
-   
-
     <div class="tab-content overflow-auto" id="myTabContent">
         <table class="table table-bordered table-hover table-sm">
             <thead  class="bg-secondary text-white">
@@ -24,6 +22,5 @@
             </tbody>
         </table>
     </div> 
-
 </section>
 {/literal}

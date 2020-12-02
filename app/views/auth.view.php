@@ -30,5 +30,4 @@ class AuthView {
         $smarty -> assign('users',$users);
         $smarty -> display('templates/abm_users.tpl');
     }
-    
 }

@@ -4,7 +4,9 @@ const app = new Vue({
     el: "#app",
     data: {
         comments: [], // esto es como un assign de smarty
+        rol: 2
     },
+
     methods: {
         rmComment: async function(idcom) {
 
@@ -25,7 +27,7 @@ const app = new Vue({
 
 const urlapi = '../api/comentarios/';
 const idmaq = document.querySelector("#idtool").value;
-let rol = 1;
+/* let rol = 1; */
 
 document.addEventListener('DOMContentLoaded', e => {
     getCommentsbyIdTool();
@@ -38,6 +40,7 @@ async function getCommentsbyIdTool() {
         const response = await fetch(urlapi + idmaq);
         const datos = await response.json();
         app.comments = datos;
+        app.rol = $_SESSION[USER_ROL];
 
     } catch (e) {
         console.log(e);
