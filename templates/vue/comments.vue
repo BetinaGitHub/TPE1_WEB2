@@ -6,7 +6,7 @@
             <tr>
                 <th scope="col">Comentario</th>
                 <th scope="col">Puntuación</th>
-                <th scope="col" v-if="rol == 0">Acción</th>           
+                <th scope="col" v-if="rol == 1">Acción</th>           
             </tr>
             </thead> 
             <tbody>

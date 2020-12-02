@@ -107,6 +107,7 @@ class ToolController {
         $this->view->showToolsconFiltro($tools);
     }
 
+  
     function showSearchTools() {
         $consulta = $_POST['search'];
         $tools = $this->model->getSearchAll($consulta);

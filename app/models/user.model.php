@@ -17,7 +17,7 @@ class UserModel {
      */
 
     public function getAll() {
-        $sql = 'SELECT * FROM usuario';
+        $sql = 'SELECT * FROM usuario where rol > 0';
         $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
