@@ -79,8 +79,7 @@ class ToolController {
 
     function showToolsconRubros() {
         // obtiene las herramientas del modelo
-    //Betina    $tools = $this->model->getAllconRubros();
-    $tools = $this->model->getAll();
+        $tools = $this->model->getAll();
         // actualizo la vista
         $this->view->showToolsconRubros($tools);
     }
@@ -189,6 +188,7 @@ class ToolController {
         $idRubro = $_POST['rubro'];
         $modelo = $_POST['modelo'];
         $precio = $_POST['precio'];
+         
 
         if (isset($_FILES['img_name'])){
             /* Carpeta donde quedan las imagenes */
@@ -196,14 +196,16 @@ class ToolController {
             $path_img =tempnam($uploads,$_FILES['img_name']['name']) ;  
             move_uploaded_file($_FILES['img_name']['tmp_name'],$path_img); 
             $path_img=basename($path_img);
+          
         }
         if (isset($_POST['borrarImg'])){
             $path_img =($_POST['nombreImg']);
             $path = './uploads/' . $path_img;
             $path_img=null; 
             unlink($path);  
+           
         } 
-          //  $this->model->updateProp($_POST['input_id'],$_POST['input_type'],$_POST['input_name'],$_POST['input_adress'],$_POST['input_value'],$_POST['input_description'],$_POST['input_date'],$imagen);
+       
         $this->model->update($idRubro,$descripcion,$modelo,$notas,$precio,$path_img,$id);
         header("Location: " . BASE_URL . "abm-tools"); 
     }
@@ -211,6 +213,7 @@ class ToolController {
     /**
      * Elimina la herramienta del sistema
      */
+
     function deleteTool($id) {
         $this->model->remove($id);
         header("Location: " . BASE_URL . "abm-tools"); 

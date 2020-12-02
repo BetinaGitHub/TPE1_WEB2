@@ -25,7 +25,7 @@ class AuthController {
     public function loginUser() {
             $email = $_POST['email'];
             $passw = $_POST['passw'];
-           // $rol = $_POST['rol'];
+      
             // verifico campos obligatorios
             if (empty($email) || empty($passw)) {
                 $this->view->showFormLogin("Faltan datos obligatorios");

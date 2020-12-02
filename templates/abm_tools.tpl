@@ -56,28 +56,18 @@
           <input type="text" name="img_name" id="imageToUpload" value={if isset($tool)} {$tool->imagen}{/if} > 
           <label class="form-check-label" for=" ">Eliminar</label>     
           <input type="checkbox"  name="borrarImg" >
-        {*   <div class="col-3 form-group"> *}
-         <div class="col-3 form-group">
-          {if isset($tool)}
-            <img width="80px" src="../uploads/{$tool->imagen}">
+          {if isset($tool->imagen)}
+            <img width="40px" src="../uploads/{$tool->imagen}">
           {else}
-            <p class="bg-info text-white text-center">No hay imagen ilustrativa</p>
+            <div class="bg-info text-white text-center col-3">
+              <p >No hay imagen ilustrativa</p>
+            </div>
           {/if}
-           </div> 
-          </div>
+        </div>
       
         <div class="col-3 form-group">
           <button type="submit" class="btn btn-dark btn-sm">{$boton}</button>
         </div>
-{* 
-        <div class="col-3 form-group">
-        {if $tool->imagen}
-          <img width="80px" src="uploads/{$tool->imagen}">
-        {else}
-          <h3 class="bg-info text-white text-center">No hay imagen ilustrativa</h3>
-        {/if}
-        </div>
- *}
 
       </div>
     </form>
