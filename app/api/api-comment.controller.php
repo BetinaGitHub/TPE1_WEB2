@@ -12,21 +12,11 @@ class ApiCommentController {
         $this->view = new ApiView();
         $this->data = file_get_contents("php://input");
     }
-/* 
-    public function getAll(){
-     //   $params = [];
-    //    $idmaq = $params[':ID'];
-        $comments = $this->model->getAll();
-        $this->view->response($comments,200);
-     //   return $comments;
-    }
-     */
+
 
     public function getAll(){
         $comments = $this->model->getAll();
-    //    var_dump($comments);
         $this->view->response($comments,200);
-       
     }
 
     public function getByIdTool($params = null){
@@ -50,24 +40,7 @@ class ApiCommentController {
         return json_decode($this->data);
     }
 
-   /*  public function add($params = null) {
-        $body = $this->getData();
-        $titulo       = $body->titulo;
-        $descripcion  = $body->descripcion;
-        $prioridad    = $body->prioridad;
-
-        $id = $this->model->insert($titulo, $descripcion, $prioridad);
-
-        if ($id > 0) {
-            $task = $this->model->get($id);
-            $this->view->response($task, 200);
-        }
-        else { 
-            $this->view->response("No se pudo insertar", 500);
-        }
-    } */
-  
-     public function insert($params = null){
+    public function insert($params = null){
         $body = $this->getData();
 
         // inserta el comentario

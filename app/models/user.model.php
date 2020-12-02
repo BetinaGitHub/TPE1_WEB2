@@ -36,11 +36,11 @@ class UserModel {
         $query->execute([$user]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
     public function post($rol,$user) {
         $sql = 'UPDATE usuario SET rol = ?  WHERE id = ?';
         $query = $this->db->prepare($sql);
         $query->execute([$rol,$user]);
-
     }
 
     public function insert($username,$email,$passw,$rol) {
@@ -49,6 +49,7 @@ class UserModel {
         $query->execute([$username,$email,$passw,$rol]);
         return $this->db->lastInsertId();
     }
+    
     public function remove($id) {
         $query = $this->db->prepare('DELETE FROM usuario WHERE id = ?');
         $query->execute([$id]);
