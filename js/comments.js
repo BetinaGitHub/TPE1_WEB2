@@ -3,13 +3,8 @@
 const app = new Vue({
     el: "#app",
     data: {
-<<<<<<< HEAD
-        rol = 2,
-        comments: [], // esto es como un assign de smarty
-=======
         comments: [],
         roluser: 0,
->>>>>>> e5d079093cd592f07ee357e9f49d5aff8129c739
     },
 
     methods: {
@@ -49,12 +44,7 @@ async function getCommentsbyIdTool() {
         const response = await fetch(urlapi + idmaq);
         const datos = await response.json();
         app.comments = datos;
-<<<<<<< HEAD
-        //app.rol = $_SESSION[USER_ROL];
-        console.log(app.rol);
-=======
         app.roluser = roluser;
->>>>>>> e5d079093cd592f07ee357e9f49d5aff8129c739
 
     } catch (e) {
         console.log(e);
